@@ -1,7 +1,6 @@
 {
     "name": "admin-panel",
-    "version": "2.0.0",
-    "description": "Free Angular 2+ Admin Template",
+    "description": " Admin Template",
     "scripts": {
         "ng": "ng",
         "start": "node server.js",
@@ -14,7 +13,7 @@
     "private": true,
     "dependencies": {
         "@angular/animations": "^6.1.7",
-        "@angular/cli": "~6.1.5",
+        "@angular/cli": "~6.2.1",
         "@angular/common": "^6.1.7",
         "@angular/compiler": "^6.1.7",
         "@angular/compiler-cli": "^6.1.7",
@@ -38,7 +37,7 @@
         "ng2-charts": "^1.6.0",
         "ngx-bootstrap": "^3.0.1",
         "ngx-perfect-scrollbar": "^6.3.1",
-        "rxjs": "^6.3.2",
+        "rxjs": "6.3.2",
         "rxjs-compat": "^6.3.2",
         "simple-line-icons": "^2.4.1",
         "ts-helpers": "^1.1.2",
@@ -65,7 +64,7 @@
         "protractor": "5.4.1",
         "ts-node": "^7.0.1",
         "tslint": "^5.11.0",
-        "typescript": "^2.9.2"
+        "typescript": "^2.7.2"
     },
     "engines": {
         "node": ">= 8.9.4",
