@@ -1,35 +1,23 @@
 {
-    "name": "@coreui/coreui-free-angular-admin-template",
+    "name": "admin-panel",
     "version": "2.0.0",
-    "description": "CoreUI Free Angular 2+ Admin Template",
-    "author": {
-        "name": "Łukasz Holeczek",
-        "url": "http://holeczek.pl",
-        "github": "https://github.com/mrholek",
-        "twitter": "https://twitter.com/lukaszholeczek"
-    },
-    "contributors": [
-        {
-            "name": "Andrzej Kopański",
-            "url": "https://github.com/xidedix"
-        }
-    ],
-    "homepage": "https://coreui.io/angular",
-    "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
-    "license": "MIT",
+    "description": "Free Angular 2+ Admin Template",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build --prod",
+        "start": "node server.js",
+        "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "postinstall": "ng build --aot --prod"
     },
     "private": true,
     "dependencies": {
         "@angular/animations": "^6.1.7",
+        "@angular/cli": "~6.1.5",
         "@angular/common": "^6.1.7",
         "@angular/compiler": "^6.1.7",
+        "@angular/compiler-cli": "^6.1.7",
         "@angular/core": "^6.1.7",
         "@angular/forms": "^6.1.7",
         "@angular/http": "^6.1.7",
@@ -55,7 +43,8 @@
         "simple-line-icons": "^2.4.1",
         "ts-helpers": "^1.1.2",
         "zone.js": "^0.8.26",
-        "ng2-datepicker": "3.1.1"
+        "ng2-datepicker": "3.1.1",
+        "express": "4.16.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.8.1",
