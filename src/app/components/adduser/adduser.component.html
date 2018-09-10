@@ -1,0 +1,93 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header">
+                        <strong>Add User</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" formControlName="name"
+                                        placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Email<sup>*</sup></label>
+                                    <input type="email" class="form-control" id="email" formControlName="email"
+                                        placeholder="Enter your email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="password">Password<sup>*</sup></label>
+                                    <input type="password" class="form-control" id="password" formControlName="password"
+                                        placeholder="Enter your password">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm Password<sup>*</sup></label>
+                                    <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                                        placeholder="Enter your confirm password"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="country">Country Code</label>
+                                    <input type="text" class="form-control" id="country" formControlName="country"
+                                        placeholder="Enter your country">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" formControlName="phone"
+                                        placeholder="Enter your phone">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.row-->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="dateOfBirth">Date Of Birth</label>
+                                    <ng-datepicker #datePicker [options]="options" formControlName="dateOfBirth"
+                                        placeholder="Date"></ng-datepicker>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <div class="col-md-6 col-form-label">
+                                        <div class="form-check form-check-inline mr-1" id="gender">
+                                            <input class="form-check-input" type="radio" name="gender" value="male"
+                                                formControlName="gender">
+                                            <label class="form-check-label" for="male">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline mr-1">
+                                            <input class="form-check-input" type="radio" name="gender" value="female"
+                                                formControlName="gender">
+                                            <label class="form-check-label" for="female">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                        <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

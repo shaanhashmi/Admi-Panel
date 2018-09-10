@@ -1,0 +1,51 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center m-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-lg-5 mx-auto">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                    <h1>Login</h1>
+                                    <p class="text-muted">Sign In to your account</p>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-user"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="Username" formControlName="email"
+                                            [ngClass]="{ 'is-invalid': submitted && lf.email.errors }">
+                                        <div *ngIf="submitted && lf.email.errors" class="invalid-feedback">
+                                            <div *ngIf="lf.email.errors.required">Email is required</div>
+                                            <div *ngIf="lf.email.errors.email">Email must be a valid email address</div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            formControlName="password" [ngClass]="{ 'is-invalid': submitted && (lf.password.errors) }">
+                                        <div *ngIf="submitted && lf.password.errors" class="invalid-feedback">
+                                            <div *ngIf="lf.password.errors.required">Password is required</div>
+                                            <div *ngIf="lf.password.errors.minlength">Password must be at least 6
+                                                characters</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary px-4">Login</button>
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
