@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiAuthService } from '../../services/api.auth.service';
+import { ApiUrl } from '../../services/api.url.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,7 +11,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent {
     loginForm: FormGroup;
     submitted: boolean = false
-    constructor(private router: Router, private fb: FormBuilder) { }
+    loader = false
+    error: boolean;
+    errorMessage: any;
+    constructor(
+        private router: Router,
+        private fb: FormBuilder,
+        private apiAuth: ApiAuthService
+    ) { }
 
     ngOnInit(): void {
         this.loginForm = this.fb.group({
@@ -24,10 +33,28 @@ export class LoginComponent {
     }
 
     onSubmit() {
+        this.error = false;
         this.submitted = true;
+        this.loader = true
         if (this.loginForm.valid) {
-            localStorage.setItem('accessToken', 'true')
-            this.router.navigate(['/admin/dashboard']);
+            this.apiAuth.authPost(ApiUrl.login, this.loginForm.value).subscribe(res => {
+                this.loader = false
+                if (res.user.userRole === "Admin") {
+                    localStorage.setItem('accessToken', res.token)
+                    localStorage.setItem('user', JSON.stringify(res.user))
+                    this.router.navigate(['/admin/dashboard']);
+                }
+                else {
+                    this.errorMessage = "You are not authorised Admin"
+                    this.error = true;
+                    throw this.errorMessage
+                }
+            }, err => {
+                this.loader = false
+                this.errorMessage = err.error.error
+                this.error = true;
+                throw this.errorMessage
+            })
         }
     }
 }

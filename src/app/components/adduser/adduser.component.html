@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
                     <div class="card-header">
                         <strong>Add User</strong>
                     </div>
@@ -10,80 +10,79 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" formControlName="name"
-                                        placeholder="Enter your name">
+                                    <label for="firstName">First Name<sup>*</sup></label>
+                                    <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                                        placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="userRole">Role<sup>*</sup></label>
+                                    <select class="custom-select" class="form-control" id="userRole" formControlName="userRole">
+                                        <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Email<sup>*</sup></label>
                                     <input type="email" class="form-control" id="email" formControlName="email"
-                                        placeholder="Enter your email">
+                                        placeholder="Enter your email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="password">Password<sup>*</sup></label>
                                     <input type="password" class="form-control" id="password" formControlName="password"
-                                        placeholder="Enter your password">
+                                        placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="confirmPassword">Confirm Password<sup>*</sup></label>
                                     <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
-                                        placeholder="Enter your confirm password"></div>
+                                        placeholder="Enter your confirm password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                        <div *ngIf="f.confirmPassword.errors">Password don't match</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="country">Country Code</label>
-                                    <input type="text" class="form-control" id="country" formControlName="country"
-                                        placeholder="Enter your country">
+                                    <label for="postcode">Country Code</label>
+                                    <input type="tel" (keypress)="disableText($event)" class="form-control" id="postcode"
+                                        formControlName="postcode" placeholder="Enter your country">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" formControlName="phone"
-                                        placeholder="Enter your phone">
-                                </div>
-                            </div>
-                        </div>
-                        <!--/.row-->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="dateOfBirth">Date Of Birth</label>
-                                    <ng-datepicker #datePicker [options]="options" formControlName="dateOfBirth"
-                                        placeholder="Date"></ng-datepicker>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="gender">Gender</label>
-                                    <div class="col-md-6 col-form-label">
-                                        <div class="form-check form-check-inline mr-1" id="gender">
-                                            <input class="form-check-input" type="radio" name="gender" value="male"
-                                                formControlName="gender">
-                                            <label class="form-check-label" for="male">Male</label>
-                                        </div>
-                                        <div class="form-check form-check-inline mr-1">
-                                            <input class="form-check-input" type="radio" name="gender" value="female"
-                                                formControlName="gender">
-                                            <label class="form-check-label" for="female">Female</label>
-                                        </div>
-                                    </div>
+                                    <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
+                                        formControlName="phone" placeholder="Enter your phone">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary mr-2"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                        <button type="submit" class="btn btn-primary mr-2"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
                         <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> Reset</button>
                     </div>
                 </form>

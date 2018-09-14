@@ -34,6 +34,9 @@ export const routes: Routes = [
             {
                 path: 'addusers',
                 loadChildren: './components/adduser/adduser.module#AdduserModule',
+                data: {
+                    title: 'Add Users'
+                },
                 canActivate: [AuthGuardService]
             },
             {
@@ -43,6 +46,9 @@ export const routes: Routes = [
             }, {
                 path: 'dashboard',
                 loadChildren: './components/dashboard/dashboard.module#DashboardModule',
+                data: {
+                    title: 'Dashboard'
+                },
                 canActivate: [AuthGuardService]
             }
         ]

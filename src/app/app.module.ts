@@ -30,6 +30,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderModule } from './components/loader/loader.module';
 
 @NgModule({
     imports: [
@@ -45,6 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         TabsModule.forRoot(),
         ChartsModule,
         HttpClientModule,
+        LoaderModule
     ],
     declarations: [
         AppComponent,

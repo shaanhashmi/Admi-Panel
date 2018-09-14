@@ -12,7 +12,8 @@ export class IntercepterHttp implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let cloneReq;
-        if (request.urlWithParams.indexOf('/login') > 0 || request.urlWithParams.indexOf('/register') > 0) {
+
+        if (request.urlWithParams.indexOf('/login') > 0) {
             cloneReq = request.clone({
                 headers: request.headers.set('Content-Type', 'application/json')
             })

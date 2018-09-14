@@ -32,6 +32,7 @@
                                                 characters</div>
                                         </div>
                                     </div>
+                                    <p *ngIf="error" class="alert alert-danger" role="alert">{{errorMessage}}</p>
                                     <div class="row">
                                         <div class="col-6">
                                             <button type="submit" class="btn btn-primary px-4">Login</button>
@@ -49,3 +50,4 @@
         </div>
     </main>
 </div>
+<app-loader *ngIf="loader"></app-loader>

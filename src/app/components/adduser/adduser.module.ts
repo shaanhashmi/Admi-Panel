@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdduserComponent } from './adduser.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgDatepickerModule } from 'ng2-datepicker';
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
     {
@@ -18,7 +17,6 @@ const routes: Routes = [
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        NgDatepickerModule,
         RouterModule.forChild(routes)
     ],
     declarations: [AdduserComponent],
