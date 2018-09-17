@@ -10,7 +10,7 @@ export const navItems = [
     },
     {
         name: 'User List',
-        url: '/admin/users/tables',
+        url: '/admin/users',
         icon: 'icon-pencil'
     },
 ];

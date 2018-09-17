@@ -41,8 +41,10 @@ export const routes: Routes = [
             },
             {
                 path: 'users',
-                loadChildren: './views/base/base.module#BaseModule',
-                canActivate: [AuthGuardService]
+                loadChildren: './components/userlist/userlist.module#UserlistModule',
+                data: {
+                    title: 'Users'
+                }
             }, {
                 path: 'dashboard',
                 loadChildren: './components/dashboard/dashboard.module#DashboardModule',

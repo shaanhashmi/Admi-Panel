@@ -25,7 +25,7 @@ export class ApiAuthService {
             );
     }
     authGet(url, query?: string): Observable<any> {
-        return this.http.get(`${environment.baseUrl}/${url}${query}`)
+        return this.http.get(`${environment.baseUrl}/${url}`)
             .pipe(
                 map(res => {
                     return res;

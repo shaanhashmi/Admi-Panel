@@ -51,6 +51,7 @@
                                         placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must at least 6 digit long</div>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +61,9 @@
                                     <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
                                         placeholder="Enter your confirm password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
                                     <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                                        <div *ngIf="f.confirmPassword.errors">Password don't match</div>
+                                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password don't match</div>
+                                        <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must at least
+                                            6 digit long</div>
                                     </div>
                                 </div>
                             </div>
@@ -68,14 +71,23 @@
                                 <div class="form-group">
                                     <label for="postcode">Country Code</label>
                                     <input type="tel" (keypress)="disableText($event)" class="form-control" id="postcode"
-                                        formControlName="postcode" placeholder="Enter your country">
+                                        formControlName="postcode" placeholder="Enter your postcode" [ngClass]="{ 'is-invalid': submitted && f.postcode.errors }">
+                                    <div *ngIf="submitted && f.postcode.errors" class="invalid-feedback">
+                                        <div *ngIf="f.postcode.errors.required">Postcode is Required</div>
+                                        <div *ngIf="f.postcode.errors.minlength">Postcode must at least
+                                            2 digit long</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
                                     <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
-                                        formControlName="phone" placeholder="Enter your phone">
+                                        formControlName="phone" placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                        <div *ngIf="f.phone.errors.required">Phone Number Required</div>
+                                        <div *ngIf="f.phone.errors.minlength">Phone Number must at least 10 digit long</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

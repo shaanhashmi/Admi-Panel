@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdduserComponent } from './adduser.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { UserlistComponent } from './userlist.component';
 import { Routes, RouterModule } from '@angular/router';
+
 const routes: Routes = [
     {
         path: '',
-        component: AdduserComponent,
+        component: UserlistComponent,
     }
 ];
-
 @NgModule({
     imports: [
         CommonModule,
-        ReactiveFormsModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [AdduserComponent],
-    exports: [AdduserComponent]
+    declarations: [UserlistComponent]
 })
-export class AdduserModule { }
+export class UserlistModule { }
