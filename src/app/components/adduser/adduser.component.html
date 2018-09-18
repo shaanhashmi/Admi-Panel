@@ -14,7 +14,7 @@
                                     <input type="text" class="form-control" id="firstName" formControlName="firstName"
                                         placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
                                     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                        <div *ngIf="f.firstName.errors.required">First name is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -61,21 +61,22 @@
                                     <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
                                         placeholder="Enter your confirm password" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
                                     <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password don't match</div>
-                                        <div *ngIf="f.confirmPassword.errors.minlength">Confirm Password must at least
-                                            6 digit long</div>
+                                        <div *ngIf="f.confirmPassword.errors.required">Confirm password required</div>
+                                        <div *ngIf="f.confirmPassword.errors?.invalid">Confirm Password don't
+                                            match</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="postcode">Country Code</label>
+                                    <label for="postcode">Postal Code</label>
                                     <input type="tel" (keypress)="disableText($event)" class="form-control" id="postcode"
-                                        formControlName="postcode" placeholder="Enter your postcode" [ngClass]="{ 'is-invalid': submitted && f.postcode.errors }">
+                                        formControlName="postcode" minlength="4" maxlength="6" placeholder="Enter your postal code"
+                                        [ngClass]="{ 'is-invalid': submitted && f.postcode.errors }">
                                     <div *ngIf="submitted && f.postcode.errors" class="invalid-feedback">
-                                        <div *ngIf="f.postcode.errors.required">Postcode is Required</div>
+                                        <div *ngIf="f.postcode.errors.required">Postcode is required</div>
                                         <div *ngIf="f.postcode.errors.minlength">Postcode must at least
-                                            2 digit long</div>
+                                            4 digit long</div>
                                     </div>
                                 </div>
                             </div>
@@ -83,10 +84,11 @@
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
                                     <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
-                                        formControlName="phone" placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                                        formControlName="phone" minlength="10" maxlength="10" placeholder="Enter your phone"
+                                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
                                     <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                                        <div *ngIf="f.phone.errors.required">Phone Number Required</div>
-                                        <div *ngIf="f.phone.errors.minlength">Phone Number must at least 10 digit long</div>
+                                        <div *ngIf="f.phone.errors.required">Phone number required</div>
+                                        <div *ngIf="f.phone.errors.minlength">Phone number must at least 10 digit long</div>
                                     </div>
                                 </div>
                             </div>

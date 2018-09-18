@@ -1,4 +1,4 @@
-<app-header [fixed]="true" [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
+<app-header #appHeader [fixed]="true" [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
     [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
     [sidebarToggler]="'lg'">
     <ul class="nav navbar-nav d-md-down-none">
@@ -6,7 +6,7 @@
             <a class="nav-link" href="javascript:" routerLink="/admin/dashboard">Dashboard</a>
         </li>
     </ul>
-    <ul class="nav navbar-nav ml-auto">
+    <ul class="nav navbar-nav ml-auto mr-4">
         <a href="javascript:" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
     </ul>
 </app-header>

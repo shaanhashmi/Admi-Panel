@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiUrl } from '../../services/api.url.service';
 import { ApiAuthService } from '../../services/api.auth.service';
+import { PasswordValidators } from '../../password-validators';
 
 @Component({
     selector: 'app-adduser',
@@ -28,12 +29,15 @@ export class AdduserComponent {
             confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
             postcode: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
             phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-        });
+        },
+            { validator: PasswordValidators.MatchPassword }
+        );
     }
 
     get f() {
         return this.userForm.controls;
     }
+
     disableText(event) {
         return event.charCode >= 48 && event.charCode <= 57;
     }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { navItems } from './../../_nav';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,14 @@ import { Router } from '@angular/router';
     templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent {
+
     public navItems = navItems;
     public sidebarMinimized = true;
     private changes: MutationObserver;
     public element: HTMLElement = document.body;
     constructor(
-        private router: Router
+        private router: Router,
+        elRef: ElementRef
     ) {
         this.changes = new MutationObserver((mutations) => {
             this.sidebarMinimized = document.body.classList.contains('sidebar-minimized');
@@ -25,5 +27,12 @@ export class DefaultLayoutComponent {
     logout() {
         localStorage.clear()
         this.router.navigate(['/login'])
+    }
+
+    ngAfterViewInit(): void {
+        let button2 = document.querySelectorAll('button')[2];
+        let button3 = document.querySelectorAll('button')[3];
+        button2.parentNode.removeChild(button2)
+        button3.parentNode.removeChild(button3)
     }
 }
