@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { navItems } from './../../_nav';
 import { Router } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent {
+    @ViewChild('header') private header: ElementRef
     public navItems = navItems;
     public sidebarMinimized = true;
     private changes: MutationObserver;
@@ -25,5 +26,11 @@ export class DefaultLayoutComponent {
     logout() {
         localStorage.clear()
         this.router.navigate(['/login'])
+    }
+    ngAfterContentInit(): void {
+        //Called after ngOnInit when the component's or directive's content has been initialized.
+        //Add 'implements AfterContentInit' to the class.
+        console.log(this.header);
+
     }
 }

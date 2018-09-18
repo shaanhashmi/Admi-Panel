@@ -28,6 +28,7 @@ export class IntercepterHttp implements HttpInterceptor {
             catchError(response => {
                 if (response instanceof HttpErrorResponse) {
                     if ((response.status === 401 || response.status === 403) && (window.location.href.match(/\?/g) || []).length < 2) {
+                        window.localStorage.clear()
                         window.localStorage.setItem('loginMessage', JSON.stringify('Token Expire. Please login Again.'));
                     }
                     if (response.status === 0 || response.status === 504) {

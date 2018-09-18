@@ -18,7 +18,7 @@ export class UserlistComponent implements OnInit {
     }
 
     getUsers() {
-        this.apiAuth.authGet(ApiUrl.manageAdmin).subscribe(res => {
+        this.apiAuth.authGet(ApiUrl.manageAdmin, '1').subscribe(res => {
             console.log(res);
         }, err => {
             console.log(err);

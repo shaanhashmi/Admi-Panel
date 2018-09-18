@@ -7,7 +7,6 @@ import { IntercepterHttp } from './services/http.interceptor'
 import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -52,7 +51,6 @@ import { LoaderModule } from './components/loader/loader.module';
         AppComponent,
         ...APP_CONTAINERS,
         LoginComponent,
-        RegisterComponent
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
