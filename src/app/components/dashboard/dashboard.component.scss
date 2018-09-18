@@ -1,0 +1,9 @@
+:host {
+    ::ng-deep .chartjs-tooltip{
+        display: none;
+    }   
+    .brand-card-header{
+        cursor: pointer;
+        height: 200px;
+    }
+}

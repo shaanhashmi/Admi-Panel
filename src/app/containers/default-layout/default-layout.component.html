@@ -1,4 +1,4 @@
-<app-header #appHeader [fixed]="true" [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
+<app-header #header [fixed]="true" [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
     [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
     [sidebarToggler]="'lg'">
     <ul class="nav navbar-nav d-md-down-none">
@@ -24,6 +24,6 @@
 
 </div>
 <app-footer>
-    <span><a href="javascript:"></a> &copy; 2018.</span>
-    <span class="ml-auto">Powered by <a href="https://coreui.io/angular">Angular</a></span>
+    <span><a href="javascript:"></a> Copyright&copy;{{date | date:'yyyy'}}.</span>
+    <span class="ml-auto">Powered by Contractor</span>
 </app-footer>

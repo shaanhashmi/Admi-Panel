@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiAuthService } from '../../services/api.auth.service';
@@ -6,7 +6,8 @@ import { ApiUrl } from '../../services/api.url.service';
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.scss']
 })
 export class LoginComponent {
     loginForm: FormGroup;
@@ -17,10 +18,13 @@ export class LoginComponent {
     constructor(
         private router: Router,
         private fb: FormBuilder,
-        private apiAuth: ApiAuthService
+        private apiAuth: ApiAuthService,
+        private renderer: Renderer2,
+        private el: ElementRef
     ) { }
 
     ngOnInit(): void {
+        this.renderer.addClass(this.el.nativeElement, 'loader-body');
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]]

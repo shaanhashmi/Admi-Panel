@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
@@ -19,12 +18,6 @@ export const routes: Routes = [
             title: 'Login Page'
         }
     }, {
-        path: 'register',
-        component: RegisterComponent,
-        data: {
-            title: 'Register Page'
-        }
-    }, {
         path: 'admin',
         component: DefaultLayoutComponent,
         data: {
@@ -32,24 +25,59 @@ export const routes: Routes = [
         },
         children: [
             {
+                path: 'dashboard',
+                loadChildren: './components/dashboard/dashboard.module#DashboardModule',
+                data: {
+                    title: 'Dashboard'
+                },
+                canActivate: [AuthGuardService]
+            }, {
                 path: 'addusers',
                 loadChildren: './components/adduser/adduser.module#AdduserModule',
                 data: {
                     title: 'Add Users'
                 },
                 canActivate: [AuthGuardService]
-            },
-            {
+            }, {
                 path: 'users',
                 loadChildren: './components/userlist/userlist.module#UserlistModule',
                 data: {
                     title: 'Users'
-                }
+                },
+                canActivate: [AuthGuardService]
             }, {
-                path: 'dashboard',
-                loadChildren: './components/dashboard/dashboard.module#DashboardModule',
+                path: 'completed-jobs',
+                loadChildren: './components/completed-jobs/completed-jobs.module#CompletedJobsModule',
                 data: {
-                    title: 'Dashboard'
+                    title: 'Completed Jobs'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'jobs',
+                loadChildren: './components/jobs/jobs.module#JobsModule',
+                data: {
+                    title: 'Jobs'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'posts',
+                loadChildren: './components/posts/posts.module#PostsModule',
+                data: {
+                    title: 'Posts'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'contracts',
+                loadChildren: './components/contracts/contracts.module#ContractsModule',
+                data: {
+                    title: 'Contracts'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'inactive-jobs',
+                loadChildren: './components/inactive-jobs/inactive-jobs.module#InactiveJobsModule',
+                data: {
+                    title: 'Inactive Jobs'
                 },
                 canActivate: [AuthGuardService]
             }

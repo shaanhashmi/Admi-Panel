@@ -6,13 +6,17 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { LoaderModule } from '../loader/loader.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
+        CommonModule,
         FormsModule,
         DashboardRoutingModule,
         ChartsModule,
         BsDropdownModule,
+        LoaderModule,
         ButtonsModule.forRoot()
     ],
     declarations: [DashboardComponent]

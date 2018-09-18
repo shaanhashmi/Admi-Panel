@@ -1,6 +1,7 @@
 .loader-body{
+     width: calc(100% - 200px) !important;
+    margin-left: 200px;
     position: fixed;
-    width: 100%;
     top: 0;
     height: 100%;
     text-align: center !important;
@@ -9,6 +10,7 @@
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.48);
+    z-index: 999999;
 }
 .lds-spinner {
     color: official;

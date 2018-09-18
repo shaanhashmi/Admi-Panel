@@ -11,6 +11,7 @@ export class UserlistComponent implements OnInit {
 
     pageNo: number = 1;
     adminList: any[] = []
+    loader: boolean;
 
 
     constructor(
@@ -22,10 +23,13 @@ export class UserlistComponent implements OnInit {
     }
 
     getUsers(pageNo) {
+        this.loader = true;
         this.apiAuth.authGet(`${ApiUrl.manageAdmin}/?page=${pageNo}`).subscribe(res => {
+            this.loader = false;
             this.adminList = res.allAdmins;
             console.log(this.adminList);
         }, err => {
+            this.loader = false;
             console.log(err);
             throw err
         })

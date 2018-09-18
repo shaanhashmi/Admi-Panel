@@ -1,4 +1,5 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { navItems } from './../../_nav';
 import { Router } from '@angular/router';
 
@@ -8,13 +9,14 @@ import { Router } from '@angular/router';
 })
 export class DefaultLayoutComponent {
 
+    @ViewChild('header') private header: ElementRef;
+    date = new Date()
     public navItems = navItems;
     public sidebarMinimized = true;
     private changes: MutationObserver;
     public element: HTMLElement = document.body;
     constructor(
         private router: Router,
-        elRef: ElementRef
     ) {
         this.changes = new MutationObserver((mutations) => {
             this.sidebarMinimized = document.body.classList.contains('sidebar-minimized');

@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserlistComponent } from './userlist.component';
+import { InactiveJobsComponent } from './inactive-jobs.component';
 import { Routes, RouterModule } from '@angular/router';
-import { LoaderModule } from '../loader/loader.module';
 
 const routes: Routes = [
     {
         path: '',
-        component: UserlistComponent,
+        component: InactiveJobsComponent,
     }
 ];
 @NgModule({
     imports: [
         CommonModule,
-        LoaderModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [UserlistComponent]
+    declarations: [InactiveJobsComponent]
 })
-export class UserlistModule { }
+export class InactiveJobsModule { }
