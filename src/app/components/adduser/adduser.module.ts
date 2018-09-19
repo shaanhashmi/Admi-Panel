@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { AdduserComponent } from './adduser.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material';
+
 const routes: Routes = [
     {
         path: '',
@@ -14,7 +17,9 @@ const routes: Routes = [
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        MatCardModule,
+        MatButtonModule
     ],
     declarations: [AdduserComponent],
     exports: [AdduserComponent]

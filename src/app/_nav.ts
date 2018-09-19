@@ -34,5 +34,9 @@ export const navItems = [
         name: 'Inactive Jobs',
         url: '/admin/inactive-jobs',
         icon: 'icon-pencil'
-    },
+    }, {
+        name: 'Test',
+        url: '/admin/test',
+        icon: 'icon-pencil'
+    }
 ];

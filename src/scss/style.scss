@@ -6,3 +6,10 @@
 
 // If you want to add something do it here
 @import "custom";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+::ng-deep{
+    .font-size-14px{
+        font-size: 14px !important;
+    }
+}

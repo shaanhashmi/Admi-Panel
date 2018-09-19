@@ -80,6 +80,14 @@ export const routes: Routes = [
                     title: 'Inactive Jobs'
                 },
                 canActivate: [AuthGuardService]
+            },
+            {
+                path: 'test',
+                loadChildren: './components/test/test.module#TestModule',
+                data: {
+                    title: 'Test'
+                },
+                canActivate: [AuthGuardService]
             }
         ]
     },

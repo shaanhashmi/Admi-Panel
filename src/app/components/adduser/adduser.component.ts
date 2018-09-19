@@ -19,10 +19,11 @@ export class AdduserComponent {
 
     constructor(private fb: FormBuilder, private apiAuth: ApiAuthService, private router: Router) {
     }
+
     ngOnInit(): void {
         this.userForm = this.fb.group({
-            firstName: ['', [Validators.required]],
-            lastName: ['', [Validators.required]],
+            first: ['', [Validators.required]],
+            last: ['', [Validators.required]],
             userRole: [this.roles[0], [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],

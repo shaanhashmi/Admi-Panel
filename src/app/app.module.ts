@@ -30,6 +30,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderModule } from './components/loader/loader.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { LoaderModule } from './components/loader/loader.module';
         TabsModule.forRoot(),
         ChartsModule,
         HttpClientModule,
-        LoaderModule
+        LoaderModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
