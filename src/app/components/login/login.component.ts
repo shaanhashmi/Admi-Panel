@@ -37,6 +37,7 @@ export class LoginComponent {
     }
 
     onSubmit() {
+        // this.renderer.addClass(this.el.nativeElement, 'loader-body');
         this.error = false;
         this.submitted = true;
         if (this.loginForm.valid) {

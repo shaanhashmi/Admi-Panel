@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiUrl } from '../../services/api.url.service';
 import { ApiAuthService } from '../../services/api.auth.service';
 import { PasswordValidators } from '../../password-validators';
@@ -17,10 +17,21 @@ export class AdduserComponent {
     date: Date;
     roles = ['Admin']
 
-    constructor(private fb: FormBuilder, private apiAuth: ApiAuthService, private router: Router) {
-    }
+    constructor(
+        private fb: FormBuilder,
+        private apiAuth: ApiAuthService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit(): void {
+
+        this.route.params.subscribe(param => {
+            if (+param['id'] !== 0) {
+                console.log(param['id']);
+
+            }
+        })
         this.userForm = this.fb.group({
             first: ['', [Validators.required]],
             last: ['', [Validators.required]],

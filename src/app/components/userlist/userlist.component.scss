@@ -1,0 +1,16 @@
+:host{
+    ::ng-deep{
+        table {
+            width: 100%;
+            thead{
+                background: aliceblue !important;
+            }
+        }
+        button:focus {
+            outline: none !important;
+        }
+    }
+    th.mat-sort-header-sorted {
+        color: black;
+    }
+}

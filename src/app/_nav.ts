@@ -3,11 +3,11 @@ export const navItems = [
         title: true,
         name: 'Dashboard'
     },
-    {
-        name: 'Add Users',
-        url: '/admin/addusers',
-        icon: 'icon-user'
-    },
+    // {
+    //     name: 'Add Users',
+    //     url: '/admin/addusers/0',
+    //     icon: 'icon-user'
+    // },
     {
         name: 'User List',
         url: '/admin/users',

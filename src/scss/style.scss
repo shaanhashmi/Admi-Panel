@@ -8,8 +8,26 @@
 @import "custom";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-::ng-deep{
-    .font-size-14px{
-        font-size: 14px !important;
-    }
+
+.font-size-14px{
+    font-size: 14px !important;
+}
+
+.font-size-16px{
+    font-size: 16px !important;
+}
+
+
+a.bg-danger,
+button.bg-danger {
+    @extend button.bg-danger:hover
+};
+
+a.bg-success, 
+button.bg-success{
+    @extend button.bg-success:hover
+}
+
+.form-control:focus{
+    border: none;
 }

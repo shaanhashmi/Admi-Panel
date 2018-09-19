@@ -32,7 +32,7 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
-                path: 'addusers',
+                path: 'addusers/:id',
                 loadChildren: './components/adduser/adduser.module#AdduserModule',
                 data: {
                     title: 'Add Users'
