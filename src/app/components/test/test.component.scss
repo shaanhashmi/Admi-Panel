@@ -1,13 +1,13 @@
-::ng-deep{
-    table {
-        width: 100%;
-        thead{
-            background: aliceblue !important;
+:host{
+    ::ng-deep{
+        table {
+            width: 100%;
+            thead{
+                background: aliceblue !important;
+            }
         }
     }
-}
-  
   th.mat-sort-header-sorted {
     color: black;
   }
-  
+}

@@ -31,7 +31,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderModule } from './components/loader/loader.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ConfirmBoxModule } from './components/modals/confirm-box/confirm-box.module';
+import { MatCardModule, MatButtonModule } from '@angular/material';
 @NgModule({
     imports: [
         BrowserModule,
@@ -47,7 +48,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ChartsModule,
         HttpClientModule,
         LoaderModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ConfirmBoxModule,
+        MatCardModule,
+        MatButtonModule
     ],
     declarations: [
         AppComponent,

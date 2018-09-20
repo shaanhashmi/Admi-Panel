@@ -2,10 +2,26 @@
   <div class="row">
     <div class="col-sm-6 col-lg-4">
       <div class="card text-white bg-primary">
+        <div class="brand-card-header" routerLink="/admin/users">
+          <div class="text-center" style="z-index:99">
+            <div class="text-value">
+              <h1>{{dashboard?.admin}}</h1>
+            </div>
+            <h3>Admin</h3>
+          </div>
+          <div class="chart-wrapper">
+            <canvas #canvasCharts baseChart class="chart" [datasets]="lineChart1Data" [labels]="lineChart1Labels"
+              [options]="lineChart1Options" [colors]="lineChart1Colours" [chartType]="lineChart1Type"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card text-white bg-primary">
         <div class="brand-card-header" (click)="onUsers()">
           <div class="text-center" style="z-index:99">
             <div class="text-value">
-              <h1>0</h1>
+              <h1>{{dashboard?.users}}</h1>
             </div>
             <h3>Users</h3>
           </div>
@@ -21,9 +37,9 @@
         <div class="brand-card-header" (click)="onUsers()">
           <div class="text-center" style="z-index:99">
             <div class="text-value">
-              <h1>0</h1>
+              <h1>{{dashboard?.company}}</h1>
             </div>
-            <h3>Jobs</h3>
+            <h3>Company</h3>
           </div>
           <div class="chart-wrapper">
             <canvas baseChart class="chart" [datasets]="lineChart3Data" [labels]="lineChart3Labels" [options]="lineChart3Options"
@@ -37,9 +53,25 @@
         <div class="brand-card-header" (click)="onUsers()">
           <div class="text-center" style="z-index:99">
             <div class="text-value">
-              <h1>0</h1>
+              <h1>{{dashboard?.contracts}}</h1>
             </div>
             <h3>Contracts</h3>
+          </div>
+          <div class="chart-wrapper">
+            <canvas baseChart class="chart" [datasets]="brandBoxChartData1" [labels]="brandBoxChartLabels" [options]="brandBoxChartOptions"
+              [colors]="brandBoxChartColours" [legend]="brandBoxChartLegend" [chartType]="brandBoxChartType"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card text-white bg-danger">
+        <div class="brand-card-header" (click)="onUsers()">
+          <div class="text-center" style="z-index:99">
+            <div class="text-value">
+              <h1>{{dashboard?.jobs}}</h1>
+            </div>
+            <h3>Jobs</h3>
           </div>
           <div class="chart-wrapper">
             <canvas baseChart class="chart" [datasets]="brandBoxChartData1" [labels]="brandBoxChartLabels" [options]="brandBoxChartOptions"

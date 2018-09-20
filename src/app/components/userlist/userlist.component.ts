@@ -3,6 +3,7 @@ import { ApiUrl } from '../../services/api.url.service';
 import { ApiAuthService } from '../../services/api.auth.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
+import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
 
 @Component({
     selector: 'app-userlist',
@@ -24,7 +25,8 @@ export class UserlistComponent implements OnInit {
 
     constructor(
         private apiAuth: ApiAuthService,
-        private router: Router
+        private router: Router,
+        private cnfboxService: ConfirmBoxService
     ) { }
 
     ngOnInit() {
@@ -60,7 +62,17 @@ export class UserlistComponent implements OnInit {
     }
 
     onDelete(id) {
-        console.log("onDelete", id);
+        this.cnfboxService.openDialog()
+            .subscribe(confirm => {
+                if (confirm === 'yes') {
+                    this.apiAuth.authDelete(ApiUrl.manageAdmin, id)
+                        .subscribe(res => {
+                            console.log(res);
+                        }, err => {
+                            // console.error(err);
+                            throw err
+                        })
+                }
+            })
     }
-
 }

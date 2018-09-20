@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule, MatIconModule } from '@angular/material';
 import { MatButtonModule, } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ConfirmBoxModule } from '../modals/confirm-box/confirm-box.module';
 
 
 const routes: Routes = [
@@ -25,7 +26,7 @@ const routes: Routes = [
         MatSortModule,
         MatButtonModule,
         MatIconModule,
-        MatPaginatorModule
+        MatPaginatorModule,
     ],
     declarations: [TestComponent],
     exports: [TestComponent]

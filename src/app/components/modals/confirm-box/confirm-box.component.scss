@@ -1,0 +1,20 @@
+:host{
+    .mat-dialog-content {
+    // margin: 10px 0;
+    text-align: center;
+    .material-icons{
+        font-size:70px;
+        color: red
+    }
+    }
+    .mat-dialog-title {
+        text-align: center;
+    }
+    .mat-dialog-actions {
+        display: block;
+        text-align: center;
+    }
+    button:focus{
+        outline: none;
+    }
+}

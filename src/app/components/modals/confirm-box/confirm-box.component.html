@@ -1,0 +1,11 @@
+<!-- <h3 mat-dialog-title>Confirm Please</h3> -->
+<div mat-dialog-content>
+  <i class="material-icons">
+    error_outline
+  </i>
+  <h3>Are you sure?</h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-raised-button color="default" (click)="onNoClick(confirmNo)">No Thanks</button>
+  <button mat-button mat-raised-button color="warn" [mat-dialog-close]="confirmYes">Yes</button>
+</div>

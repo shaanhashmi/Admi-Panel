@@ -46,4 +46,16 @@ export class ApiAuthService {
                 })
             );
     }
+
+    authDelete(url, id): Observable<any> {
+        return this.http.delete(url, id)
+            .pipe(
+                map(res => {
+                    return res;
+                }),
+                catchError(err => {
+                    return throwError(err || 'Server error');
+                })
+            );
+    }
 }

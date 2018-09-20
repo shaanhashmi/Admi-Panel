@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
 import { ApiAuthService } from '../../services/api.auth.service';
 import { ApiUrl } from '../../services/api.url.service';
+import { ConfirmBoxComponent } from '../modals/confirm-box/confirm-box.component';
+import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
 
 export interface PeriodicElement {
     first: string;
@@ -29,9 +31,11 @@ export class TestComponent {
 
     pageNo: number = 1;
     loader: boolean;
+    dialogResult: any;
 
     constructor(
-        private apiAuth: ApiAuthService
+        private apiAuth: ApiAuthService,
+        private cnfbox: ConfirmBoxService
     ) { }
 
     ngOnInit() {
@@ -53,5 +57,10 @@ export class TestComponent {
             console.log(err);
             throw err
         })
+    }
+
+    openDialog() {
+        this.cnfbox.openDialog()
+            .subscribe(confirm => console.log(confirm))
     }
 }

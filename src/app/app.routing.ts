@@ -74,8 +74,8 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
-                path: 'inactive-jobs',
-                loadChildren: './components/inactive-jobs/inactive-jobs.module#InactiveJobsModule',
+                path: 'companies',
+                loadChildren: './components/company/company.module#CompanyModule',
                 data: {
                     title: 'Inactive Jobs'
                 },

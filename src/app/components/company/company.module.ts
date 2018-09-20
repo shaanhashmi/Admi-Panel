@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContractsComponent } from './contracts.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CompanyComponent } from './company.component';
+import { MatInputModule, MatPaginatorModule, MatIconModule, MatButtonModule, MatSortModule, MatTableModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule } from '@angular/material';
 
 const routes: Routes = [
     {
         path: '',
-        component: ContractsComponent,
+        component: CompanyComponent,
     }
 ];
 @NgModule({
@@ -23,6 +23,6 @@ const routes: Routes = [
         MatPaginatorModule,
         MatInputModule
     ],
-    declarations: [ContractsComponent]
+    declarations: [CompanyComponent]
 })
-export class ContractsModule { }
+export class CompanyModule { }

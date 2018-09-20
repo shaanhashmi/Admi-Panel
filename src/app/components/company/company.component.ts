@@ -6,16 +6,16 @@ import { Router } from '@angular/router';
 import { ApiAuthService } from '../../services/api.auth.service';
 
 @Component({
-  selector: 'app-contracts',
-  templateUrl: './contracts.component.html',
-  styleUrls: ['./contracts.component.scss']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./company.component.scss']
 })
-export class ContractsComponent implements OnInit {
+export class CompanyComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  displayedColumns: string[] = ['first', 'userRole', 'email', 'createdAt', 'status', 'actions'];
+  displayedColumns: string[] = ['name', 'domain', 'location', 'createdAt', 'actions'];
   adminList: any[] = []
   dataSource = new MatTableDataSource(this.adminList);
 
@@ -23,6 +23,7 @@ export class ContractsComponent implements OnInit {
   loader: boolean;
   searchValue: string;
   contractsList: any;
+  companyList: any;
 
   constructor(
     private apiAuth: ApiAuthService,
@@ -36,10 +37,10 @@ export class ContractsComponent implements OnInit {
 
   getUsers(pageNo) {
     this.loader = true;
-    this.apiAuth.authGet(`${ApiUrl.getAllContracts}/?page=${pageNo}`).subscribe(res => {
+    this.apiAuth.authGet(`${ApiUrl.getAllCompanies}/?page=${pageNo}`).subscribe(res => {
       this.loader = false;
-      this.contractsList = res.contractList;
-      this.dataSource = new MatTableDataSource(this.contractsList);
+      this.companyList = res.companyList;
+      this.dataSource = new MatTableDataSource(this.companyList);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     }, err => {

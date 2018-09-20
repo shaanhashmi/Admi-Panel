@@ -11,6 +11,13 @@ import { ApiUrl } from '../../services/api.url.service';
 })
 export class DashboardComponent implements OnInit {
   radioModel: string = 'Month';
+  dashboard: object;
+  users: number
+  admin: number
+  jobs: number
+  company: number
+  contracts: number
+
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -114,7 +121,6 @@ export class DashboardComponent implements OnInit {
   ];
   public lineChart3Legend = false;
   public lineChart3Type = 'line';
-
 
   // barChart1
   public barChart1Data: Array<any> = [
@@ -236,8 +242,9 @@ export class DashboardComponent implements OnInit {
     this.loader = true
     this.apiAuth.authGet(ApiUrl.dashboard).subscribe(res => {
       this.loader = false
-      if (res.code === 200) {
-        console.log(res.dashboard)
+      if (res.success) {
+        // console.log(res.dashboard)
+        this.dashboard = res.dashboard
       }
     }, err => {
       this.loader = false

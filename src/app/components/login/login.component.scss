@@ -3,4 +3,10 @@
         width:100% !important;
         margin-left: 0;
     }
+    .card{
+        border: none;
+    }
+    button:focus {
+        outline: none;
+    }
 }

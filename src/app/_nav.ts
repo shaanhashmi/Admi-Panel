@@ -3,19 +3,19 @@ export const navItems = [
         title: true,
         name: 'Dashboard'
     },
-    // {
-    //     name: 'Add Users',
-    //     url: '/admin/addusers/0',
-    //     icon: 'icon-user'
-    // },
     {
-        name: 'User List',
+        name: 'Admin',
+        url: '/admin/admin',
+        icon: 'icon-user'
+    },
+    {
+        name: 'Users',
         url: '/admin/users',
-        icon: 'icon-pencil'
+        icon: 'icon-user'
     }, {
         name: 'Jobs',
         url: '/admin/jobs',
-        icon: 'icon-user'
+        icon: 'icon-briefcase'
     },
     {
         name: 'Completed Jobs',
@@ -24,15 +24,15 @@ export const navItems = [
     }, {
         name: 'Posts',
         url: '/admin/posts',
-        icon: 'icon-user'
+        icon: 'icon-pencil'
     },
     {
         name: 'Contracts',
         url: '/admin/contracts',
         icon: 'icon-pencil'
     }, {
-        name: 'Inactive Jobs',
-        url: '/admin/inactive-jobs',
+        name: 'Companies',
+        url: '/admin/companies',
         icon: 'icon-pencil'
     }, {
         name: 'Test',
