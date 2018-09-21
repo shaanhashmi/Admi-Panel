@@ -41,7 +41,7 @@ export class LoginComponent {
         this.error = false;
         this.submitted = true;
         if (this.loginForm.valid) {
-            this.loader = true
+            this.loader = true;
             this.apiAuth.authPost(ApiUrl.login, this.loginForm.value).subscribe(res => {
                 this.loader = false
                 if (res.user.userRole === "Admin") {

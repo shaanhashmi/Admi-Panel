@@ -8,6 +8,7 @@ import { MatSortModule, MatIconModule } from '@angular/material';
 import { MatButtonModule, } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ConfirmBoxModule } from '../modals/confirm-box/confirm-box.module';
+import { JobPropertyModule } from '../job-property/job-property.module';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatPaginatorModule,
+        JobPropertyModule
     ],
     declarations: [TestComponent],
     exports: [TestComponent]

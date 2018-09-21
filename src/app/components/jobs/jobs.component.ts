@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatSelect } from '@angular/material';
 import { ApiAuthService } from '../../services/api.auth.service';
 import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
 import { ApiUrl } from '../../services/api.url.service';
+import { pipe } from '@angular/core/src/render3/pipe';
 
 @Component({
   selector: 'app-jobs',
@@ -16,14 +17,15 @@ export class JobsComponent implements OnInit {
 
 
   displayedColumns: string[] = ['jobTitle', 'propertyType', 'jobStart', 'postExpiry', 'status', 'actions'];
-  adminList: any[] = []
-  dataSource = new MatTableDataSource(this.adminList);
+  jobList: any[] = []
+  dataSource = new MatTableDataSource(this.jobList);
 
 
   pageNo: number = 1;
   loader: boolean;
   dialogResult: any;
-  jobList: any;
+  selected: 'ongoing'
+  jobStatus: any[] = ["ongoing", "completed", "posted", "inactive"];
 
   constructor(
     private apiAuth: ApiAuthService,
@@ -53,6 +55,20 @@ export class JobsComponent implements OnInit {
   openDialog() {
     this.cnfbox.openDialog()
       .subscribe(confirm => console.log(confirm))
+  }
+
+  selectionChange(ev: MatSelect, jobObj) {
+    console.log(ev.value, jobObj._id);
+
+    return
+    this.apiAuth.authUpdate(ApiUrl.changeStatus, ev.value)
+      .subscribe((res: Response) => {
+        console.log(res);
+
+      }, (err: Error) => {
+        console.log(err);
+
+      })
   }
 
 }

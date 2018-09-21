@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContractsComponent } from './contracts.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 
 const routes: Routes = [
     {
@@ -21,7 +21,8 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatPaginatorModule,
-        MatInputModule
+        MatInputModule,
+        MatProgressSpinnerModule
     ],
     declarations: [ContractsComponent]
 })

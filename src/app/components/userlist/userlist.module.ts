@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UserlistComponent } from './userlist.component';
 import { Routes, RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 import { FilterPipe } from '../../pipes/filter.pipe';
 
 const routes: Routes = [
@@ -16,6 +16,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes),
         MatTableModule,
@@ -23,7 +24,8 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatPaginatorModule,
-        MatInputModule
+        MatInputModule,
+        MatProgressSpinnerModule
     ],
     declarations: [UserlistComponent, FilterPipe]
 })

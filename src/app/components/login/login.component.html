@@ -41,7 +41,10 @@
                                         <p *ngIf="error" class="alert alert-danger" role="alert">{{errorMessage}}</p>
                                         <div class="row">
                                             <div class="col-6">
-                                                <button mat-raised-button color="primary" type="submit" class="px-4 w-100">Login</button>
+                                                <button mat-raised-button color="primary" type="submit" class="px-4 w-100">
+                                                    Login
+                                                </button>
+                                                <!-- <button mat-raised-button color="primary" type="submit" class="px-4 w-100"></button> -->
                                                 <!-- <button type="submit" class="btn btn-primary px-4">Login</button> -->
                                             </div>
                                             <div class="col-6 text-right">
@@ -51,6 +54,9 @@
                                     </form>
                                 </div>
                             </div>
+                            <div *ngIf="loader" class="loader d-flex align-items-center justify-content-center position-absolute w-100 h-100">
+                                <mat-spinner [diameter]="50"></mat-spinner>
+                            </div>
                         </div>
                     </mat-card>
                 </div>
@@ -59,4 +65,4 @@
     </main>
 </div>
 
-<app-loader *ngIf="loader"></app-loader>
+<!-- <app-loader *ngIf="loader"></app-loader> -->

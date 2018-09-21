@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return null;
+    return value.map(res => console.log(res))
   }
 
 }

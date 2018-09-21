@@ -4,6 +4,7 @@ import { ApiAuthService } from '../../services/api.auth.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
 import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-userlist',
@@ -16,6 +17,7 @@ export class UserlistComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     displayedColumns: string[] = ['first', 'userRole', 'email', 'createdAt', 'status', 'actions'];
+    transformToLowerCaseArr: string[] = ['first', 'userRole', 'email', 'actions'];
 
     userList: any[] = [];
     dataSource = new MatTableDataSource(this.userList);
@@ -39,7 +41,7 @@ export class UserlistComponent implements OnInit {
         this.loader = true;
         this.apiAuth.authGet(`${ApiUrl.getAllUsers}/?page=${pageNo}`).subscribe(res => {
             this.loader = false;
-            this.userList = res.userList;
+            this.userList = this.apiAuth.transformToLowerCase(this.transformToLowerCaseArr, res.userList);
             this.dataSource = new MatTableDataSource(this.userList);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
@@ -71,7 +73,6 @@ export class UserlistComponent implements OnInit {
                         .subscribe(res => {
                             console.log(res);
                         }, err => {
-                            // console.error(err);
                             throw err
                         })
                 }

@@ -16,13 +16,12 @@ export class ContractsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['first', 'userRole', 'email', 'createdAt', 'status', 'actions'];
-  adminList: any[] = []
-  dataSource = new MatTableDataSource(this.adminList);
+  contractsList: any[] = []
+  dataSource = new MatTableDataSource(this.contractsList);
 
   pageNo: number = 1;
   loader: boolean;
   searchValue: string;
-  contractsList: any;
 
   constructor(
     private apiAuth: ApiAuthService,

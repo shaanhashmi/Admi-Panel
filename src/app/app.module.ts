@@ -32,7 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderModule } from './components/loader/loader.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmBoxModule } from './components/modals/confirm-box/confirm-box.module';
-import { MatCardModule, MatButtonModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 @NgModule({
     imports: [
         BrowserModule,
@@ -51,7 +51,8 @@ import { MatCardModule, MatButtonModule } from '@angular/material';
         BrowserAnimationsModule,
         ConfirmBoxModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
+        MatProgressSpinnerModule
     ],
     declarations: [
         AppComponent,

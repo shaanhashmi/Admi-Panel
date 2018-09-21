@@ -81,6 +81,9 @@
       </div>
     </div>
   </div>
+  <div *ngIf="loader" class="loader d-flex align-items-center justify-content-center h-100">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
 </div>
 
-<app-loader *ngIf="loader"></app-loader>
+<!-- <app-loader *ngIf="loader"></app-loader> -->

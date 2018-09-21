@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { CompanyComponent } from './company.component';
-import { MatInputModule, MatPaginatorModule, MatIconModule, MatButtonModule, MatSortModule, MatTableModule } from '@angular/material';
+import { MatInputModule, MatPaginatorModule, MatIconModule, MatButtonModule, MatSortModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -21,7 +21,8 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatPaginatorModule,
-        MatInputModule
+        MatInputModule,
+        MatProgressSpinnerModule
     ],
     declarations: [CompanyComponent]
 })

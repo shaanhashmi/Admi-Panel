@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { JobsComponent } from './jobs.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatChipsModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatChipsModule, MatProgressSpinnerModule, MatSelectModule } from '@angular/material';
 
 const routes: Routes = [
     {
@@ -22,7 +22,9 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatPaginatorModule,
-        MatChipsModule
+        MatChipsModule,
+        MatProgressSpinnerModule,
+        MatSelectModule
     ],
     declarations: [JobsComponent]
 })

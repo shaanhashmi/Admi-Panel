@@ -70,6 +70,13 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
             </table>
+            <div *ngIf="loader" class="w-100 d-flex justify-content-center p-5">
+              <mat-spinner [diameter]="50"></mat-spinner>
+            </div>
+            <div *ngIf="!contractsList.length && !loader" class="w-100 d-flex justify-content-center p-5">
+              <div class="text-muted">No record found.</div>
+            </div>
+
             <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
           </div>
         </div>

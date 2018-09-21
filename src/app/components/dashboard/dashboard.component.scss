@@ -6,4 +6,12 @@
         cursor: pointer;
         height: 200px;
     }
+    .loader{
+        background: #f0f3f582 ;
+        position: absolute;
+        top:1px;
+        width: 85% !important;
+        z-index: 99;
+    }
+    
 }

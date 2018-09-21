@@ -16,14 +16,14 @@ export class CompanyComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   displayedColumns: string[] = ['name', 'domain', 'location', 'createdAt', 'actions'];
-  adminList: any[] = []
-  dataSource = new MatTableDataSource(this.adminList);
+  transformToLowerCaseArr: any[] = ['name', 'domain', 'location'];
+  companyList: any[] = []
+  dataSource = new MatTableDataSource(this.companyList);
 
   pageNo: number = 1;
   loader: boolean;
   searchValue: string;
-  contractsList: any;
-  companyList: any;
+
 
   constructor(
     private apiAuth: ApiAuthService,
@@ -39,7 +39,7 @@ export class CompanyComponent implements OnInit {
     this.loader = true;
     this.apiAuth.authGet(`${ApiUrl.getAllCompanies}/?page=${pageNo}`).subscribe(res => {
       this.loader = false;
-      this.companyList = res.companyList;
+      this.companyList = []//this.apiAuth.transformToLowerCase(this.transformToLowerCaseArr, res.companyList);
       this.dataSource = new MatTableDataSource(this.companyList);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

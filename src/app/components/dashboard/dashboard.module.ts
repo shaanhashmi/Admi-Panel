@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LoaderModule } from '../loader/loader.module';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
         ChartsModule,
         BsDropdownModule,
         LoaderModule,
+        MatProgressSpinnerModule,
         ButtonsModule.forRoot()
     ],
     declarations: [DashboardComponent]

@@ -58,4 +58,15 @@ export class ApiAuthService {
                 })
             );
     }
+
+    transformToLowerCase(fieldArr, dataArr) {
+        dataArr.forEach((element, idx) => {
+            for (const key in element) {
+                if (fieldArr.includes(key)) {
+                    element[key] = element[key].trim().toLowerCase();
+                }
+            }
+        });
+        return dataArr
+    }
 }

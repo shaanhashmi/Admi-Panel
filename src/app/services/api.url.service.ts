@@ -5,6 +5,7 @@ export const ApiUrl = {
     getAllJobs: 'api/admin/joblist',
     getAllUsers: 'api/admin/userlist',
     getAllCompanies: 'api/admin/companylist',
-    getAllContracts: 'api/admin/contractlist'
+    getAllContracts: 'api/admin/contractlist',
+    changeStatus: 'api/job/changeStatus'
 
 }
