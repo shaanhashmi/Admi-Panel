@@ -18,10 +18,6 @@ export const navItems = [
         icon: 'icon-briefcase'
     },
     {
-        name: 'Completed Jobs',
-        url: '/admin/completed-jobs',
-        icon: 'icon-pencil'
-    }, {
         name: 'Posts',
         url: '/admin/posts',
         icon: 'icon-pencil'

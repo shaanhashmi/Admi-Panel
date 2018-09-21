@@ -16,12 +16,14 @@ export class UserlistComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     displayedColumns: string[] = ['first', 'userRole', 'email', 'createdAt', 'status', 'actions'];
-    adminList: any[] = []
-    dataSource = new MatTableDataSource(this.adminList);
+
+    userList: any[] = [];
+    dataSource = new MatTableDataSource(this.userList);
 
     pageNo: number = 1;
     loader: boolean;
     searchValue: string;
+
 
     constructor(
         private apiAuth: ApiAuthService,
@@ -35,10 +37,10 @@ export class UserlistComponent implements OnInit {
 
     getUsers(pageNo) {
         this.loader = true;
-        this.apiAuth.authGet(`${ApiUrl.manageAdmin}/?page=${pageNo}`).subscribe(res => {
+        this.apiAuth.authGet(`${ApiUrl.getAllUsers}/?page=${pageNo}`).subscribe(res => {
             this.loader = false;
-            this.adminList = res.allAdmins;
-            this.dataSource = new MatTableDataSource(this.adminList);
+            this.userList = res.userList;
+            this.dataSource = new MatTableDataSource(this.userList);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
         }, err => {

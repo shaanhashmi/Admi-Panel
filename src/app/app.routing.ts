@@ -46,10 +46,10 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
-                path: 'completed-jobs',
-                loadChildren: './components/completed-jobs/completed-jobs.module#CompletedJobsModule',
+                path: 'admin',
+                loadChildren: './components/admin/admin.module#AdminModule',
                 data: {
-                    title: 'Completed Jobs'
+                    title: 'Admin'
                 },
                 canActivate: [AuthGuardService]
             }, {

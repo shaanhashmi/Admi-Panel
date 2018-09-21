@@ -1,0 +1,22 @@
+:host{
+    ::ng-deep{
+        table {
+            width: 100%;
+            thead{
+                background: aliceblue !important;
+            }
+        }
+        button:focus {
+            outline: none !important;
+        }
+    }
+    th.mat-sort-header-sorted {
+        color: black;
+    }
+
+    ::ng-deep .example-container {
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 200px;
+    }
+}

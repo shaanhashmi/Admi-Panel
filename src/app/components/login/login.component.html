@@ -3,14 +3,14 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-4 col-lg-4 mx-auto">
+                <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                     <mat-card class="mat-elevation-z8 p-0">
                         <div class="card-group">
                             <div class="card p-3">
                                 <div class="card-body">
                                     <div class="text-center pb-3">
-                                        <!-- <img [src]="assets/img/brand/logo.jpg" alt=""> -->
-                                        <h1>Login</h1>
+                                        <img src="assets/img/brand/logo.png" alt="" width="100" class="pb-4">
+                                        <!-- <h1>Login</h1> -->
                                         <p class="text-muted">Sign In to your account</p>
                                     </div>
                                     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -41,7 +41,7 @@
                                         <p *ngIf="error" class="alert alert-danger" role="alert">{{errorMessage}}</p>
                                         <div class="row">
                                             <div class="col-6">
-                                                <button mat-raised-button color="primary" type="submit" class="px-4">Login</button>
+                                                <button mat-raised-button color="primary" type="submit" class="px-4 w-100">Login</button>
                                                 <!-- <button type="submit" class="btn btn-primary px-4">Login</button> -->
                                             </div>
                                             <div class="col-6 text-right">

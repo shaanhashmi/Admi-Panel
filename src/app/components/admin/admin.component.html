@@ -4,20 +4,20 @@
       <div class="card">
         <div class="card-header py-0">
           <div class="position-absolute mt-3">
-            <i class="fa fa-align-justify"></i> Users
+            <i class="fa fa-align-justify"></i> Admin Users
           </div>
           <div class="float-right">
             <mat-form-field class="mr-3 pt-1">
               <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
             </mat-form-field>
 
-            <!-- <button mat-raised-button type="submit" color="primary" class="mr-2" [routerLink]="['/admin/addusers', 0]"><i
+            <button mat-raised-button type="submit" color="primary" class="mr-2" [routerLink]="['/admin/addusers', 0]"><i
                 class="fa fa-user-plus mr-2"></i>
-              Add User</button> -->
+              Add User</button>
           </div>
         </div>
         <div class="card-body">
-          <div class="mat-elevation-z8">
+          <div class="example-container mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
 
               <ng-container matColumnDef="first">
