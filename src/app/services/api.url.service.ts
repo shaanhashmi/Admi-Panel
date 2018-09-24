@@ -3,6 +3,7 @@ export const ApiUrl = {
     manageAdmin: 'api/admin',
     dashboard: 'api/admin/dashboard',
     getAllJobs: 'api/admin/joblist',
+    jobdetails: 'api/jobdetails',
     getAllUsers: 'api/admin/userlist',
     getAllCompanies: 'api/admin/companylist',
     getAllContracts: 'api/admin/contractlist',

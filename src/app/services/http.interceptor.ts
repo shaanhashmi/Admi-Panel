@@ -31,9 +31,11 @@ export class IntercepterHttp implements HttpInterceptor {
                         window.localStorage.clear()
                         window.localStorage.setItem('loginMessage', JSON.stringify('Token Expire. Please login Again.'));
                     }
-                    if (response.status === 0 || response.status === 504) {
-                        response.error.status = 0,
-                            response.error.message = "Network connection error"
+                    if (response.status === 502 || response.status === 504) {
+                        response.error.error = "Internal Server Error";
+                    }
+                    if (response.status === 0) {
+                        response.error.error = "Network Connection Error";
                     }
                     return throwError(response);
                 }

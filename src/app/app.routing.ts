@@ -60,6 +60,13 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
+                path: 'jobs/:jobid',
+                loadChildren: './components/view-job/view-job.module#ViewJobModule',
+                data: {
+                    title: 'Jobs Description'
+                },
+                canActivate: [AuthGuardService]
+            }, {
                 path: 'posts',
                 loadChildren: './components/posts/posts.module#PostsModule',
                 data: {

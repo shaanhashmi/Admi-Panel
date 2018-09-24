@@ -3,12 +3,13 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-
+import { ApiUrl } from "./api.url.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiAuthService {
+    jobData: any
     constructor(
         private http: HttpClient
     ) { }
@@ -16,9 +17,6 @@ export class ApiAuthService {
     authPost(url, body): Observable<any> {
         return this.http.post(`${environment.baseUrl}/${url}`, body)
             .pipe(
-                map(res => {
-                    return res;
-                }),
                 catchError(err => {
                     return throwError(err || 'Server error');
                 })
@@ -27,9 +25,6 @@ export class ApiAuthService {
     authGet(url, query?: string): Observable<any> {
         return this.http.get(`${environment.baseUrl}/${url}`)
             .pipe(
-                map(res => {
-                    return res;
-                }),
                 catchError(err => {
                     return throwError(err || 'Server error');
                 })
@@ -38,9 +33,6 @@ export class ApiAuthService {
     authUpdate(url, body): Observable<any> {
         return this.http.put(`${environment.baseUrl}/${url}`, body)
             .pipe(
-                map(res => {
-                    return res;
-                }),
                 catchError(err => {
                     return throwError(err || 'Server error');
                 })
@@ -50,9 +42,6 @@ export class ApiAuthService {
     authDelete(url, id): Observable<any> {
         return this.http.delete(url, id)
             .pipe(
-                map(res => {
-                    return res;
-                }),
                 catchError(err => {
                     return throwError(err || 'Server error');
                 })
@@ -69,4 +58,27 @@ export class ApiAuthService {
         });
         return dataArr
     }
+
+    setJob(data) {
+        this.jobData = data
+    };
+
+    getJob(id): Observable<any> {
+        if (this.jobData)
+            return new Observable(observer => {
+                observer.next(this.jobData)
+            })
+        return this.http.get(`${environment.baseUrl}/${ApiUrl.jobdetails}/${id}`)
+            .pipe(
+                map(res => {
+                    this.jobData = res
+                    return this.jobData = this.jobData.details[0];
+                }),
+                catchError(err => {
+                    return throwError(err || 'Server error');
+                })
+            );
+    }
+
+
 }
