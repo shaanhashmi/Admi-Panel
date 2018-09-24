@@ -1,0 +1,19 @@
+:host{
+    .chips{
+        min-width: 120px;
+        padding: 10px;
+    }
+
+    .chips > i{
+        cursor: pointer;
+    }
+
+    .action-buttons{
+        top: 40px;
+        right: 10px;
+    }
+    button:focus {
+        outline: none;
+    }
+   
+}

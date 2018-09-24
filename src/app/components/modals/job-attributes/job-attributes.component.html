@@ -1,0 +1,41 @@
+<!-- <h3 mat-dialog-title>Confirm Please</h3> -->
+<!-- <div mat-dialog-content class="py-2">
+  <i class="material-icons">
+    error_outline
+  </i>
+  <h3>Are you sure?</h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-raised-button color="default" (click)="onNoClick(confirmNo)">No Thanks</button>
+  <button mat-button mat-raised-button color="warn" [mat-dialog-close]="confirmYes">Yes</button>
+</div> -->
+
+
+<h3 mat-dialog-title>Confirm Please</h3>
+<div mat-dialog-content class="py-2">
+  <form [formGroup]="jobAttrForm" (ngSubmit)="onSubmit(f)">
+    <div formArrayName="items" *ngFor="let item of jobAttrForm.get('items').controls; let i = index;">
+      <div [formGroupName]="i">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <!-- <label for="name">Name<sup>*</sup></label> -->
+              <input type="text" class="form-control" formControlName="name" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && jobAttrForm.get('items').controls[i].name.errors }">
+              <i *ngIf="jobAttrForm.get('items').controls.length > 1" class="material-icons float-right" (click)="removeItem(i)">clear</i>
+              <div *ngIf="submitted && jobAttrForm.get('items').controls[i].name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">This field is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <button mat-mini-fab color="primary" (click)="addItem('Added')"> -->
+<i class="material-icons add-job-attributes" (click)="addItem('Added')">add_circle_outline</i>
+<!-- </button> -->
+<div mat-dialog-actions>
+  <button mat-button mat-raised-button color="primary" (click)="onSubmit(f)" [disabled]="jobAttrForm.invalid">Save</button>
+  <!-- <button mat-button mat-raised-button color="warn" [mat-dialog-close]="confirmYes">Yes</button> -->
+</div>

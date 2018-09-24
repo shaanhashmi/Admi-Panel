@@ -33,6 +33,7 @@ import { LoaderModule } from './components/loader/loader.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmBoxModule } from './components/modals/confirm-box/confirm-box.module';
 import { MatCardModule, MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
+import { JobAttributesModule } from './components/modals/job-attributes/job-attributes.module';
 @NgModule({
     imports: [
         BrowserModule,
@@ -49,10 +50,11 @@ import { MatCardModule, MatButtonModule, MatProgressSpinnerModule } from '@angul
         HttpClientModule,
         LoaderModule,
         BrowserAnimationsModule,
-        ConfirmBoxModule,
         MatCardModule,
         MatButtonModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        ConfirmBoxModule,
+        JobAttributesModule
     ],
     declarations: [
         AppComponent,

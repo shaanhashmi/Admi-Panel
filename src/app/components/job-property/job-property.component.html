@@ -1,31 +1,101 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-lg-12">
-      <div class="card">
+      <!--  <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Jobs
+        </div> -->
+
+      <!-- <app-job-types-properties [jobTypes]="jobTypes"></app-job-types-properties>
+        <app-room-level [roomLevels]="roomLevels"></app-room-level>
+        <app-job-traders [jobTraders]="jobTraders"></app-job-traders> -->
+      <app-job-works [jobWorks]="jobWorks"></app-job-works>
+
+      <!-- <div class="card-body">
+          <mat-card class="example-card p-0">
+            <mat-card-header class="bg-light">
+              <mat-card-title class="mb-0 p-2">
+                Job Type Property
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="p-4">
+              <mat-chip-list>
+                <mat-chip *ngFor="let chip of availableColors; let i = index;" selected [color]="chip.color" class="chips pl-3 justify-content-between">
+                  {{chip.name}} <i class="material-icons" (click)="removeRoomLevel(i)">highlight_off</i>
+                </mat-chip>
+              </mat-chip-list>
+              <mat-card-actions class="p-4 position-absolute action-buttons">
+                <button mat-mini-fab color="primary" (click)="addRoomLevel('Added')">
+                  <i class="material-icons">add</i>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
         </div>
         <div class="card-body">
-          <mat-card class="example-card">
-            <mat-card-header class="p-2 bg-light">
-              <mat-card-title>
+          <mat-card class="example-card p-0">
+            <mat-card-header class="bg-light">
+              <mat-card-title class="mb-0 p-2">
                 Room Level
               </mat-card-title>
             </mat-card-header>
-            <mat-card-content>
+            <mat-card-content class="p-4">
               <mat-chip-list>
-                <mat-chip *ngFor="let chip of availableColors" selected [color]="chip.color">
-                  {{chip.name}}
+                <mat-chip class="chips pl-3 justify-content-between" *ngFor="let chip of availableColors; let i = index;">
+                  {{chip.name}} <i class="material-icons" (click)="removeRoomLevel(i)">highlight_off</i>
                 </mat-chip>
               </mat-chip-list>
+              <mat-card-actions class="p-4 position-absolute action-buttons">
+                <button mat-mini-fab color="primary" (click)="addRoomLevel('Added')">
+                  <i class="material-icons">add</i>
+                </button>
+              </mat-card-actions>
             </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
           </mat-card>
         </div>
-      </div>
+        <div class="card-body">
+          <mat-card class="example-card p-0">
+            <mat-card-header class="bg-light">
+              <mat-card-title class="mb-0 p-2">
+                Job Traders
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="p-4">
+              <mat-chip-list>
+                <mat-chip class="chips pl-3 justify-content-between" *ngFor="let chip of availableColors; let i = index;">
+                  {{chip.name}} <i class="material-icons" (click)="removeRoomLevel(i)">highlight_off</i>
+                </mat-chip>
+              </mat-chip-list>
+              <mat-card-actions class="p-4 position-absolute action-buttons">
+                <button mat-mini-fab color="primary" (click)="addRoomLevel('Added')">
+                  <i class="material-icons">add</i>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="card-body">
+          <mat-card class="example-card p-0">
+            <mat-card-header class="bg-light">
+              <mat-card-title class="mb-0 p-2">
+                Job Works
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="p-4">
+              <mat-chip-list>
+                <mat-chip class="chips pl-3 justify-content-between" *ngFor="let chip of availableColors; let i = index;">
+                  {{chip.name}} <i class="material-icons" (click)="removeRoomLevel(i)">highlight_off</i>
+                </mat-chip>
+              </mat-chip-list>
+              <mat-card-actions class="p-4 position-absolute action-buttons">
+                <button mat-mini-fab color="primary" (click)="addRoomLevel('Added')">
+                  <i class="material-icons">add</i>
+                </button>
+              </mat-card-actions>
+            </mat-card-content>
+          </mat-card>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </div>

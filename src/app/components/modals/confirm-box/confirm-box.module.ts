@@ -9,6 +9,7 @@ import { ConfirmBoxComponent } from './confirm-box.component';
         MatDialogModule,
         MatCardModule,
         MatButtonModule
+
     ],
     declarations: [ConfirmBoxComponent],
     exports: [ConfirmBoxComponent],
