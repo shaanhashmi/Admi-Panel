@@ -1,0 +1,28 @@
+:host{
+    .mat-dialog-content {
+    // margin: 10px 0;
+    // text-align: center;
+    }
+    .mat-dialog-title {
+        text-align: center;
+    }
+    .mat-dialog-actions {
+        display: block;
+        text-align: center;
+    }
+    button:focus{
+        outline: none;
+    }
+    .mat-raised-button{
+        width: 100px;
+    }
+    .invalid-feedback{
+        display: block;
+    }
+    ::ng-deep .add-job-attributes{
+        font-size: 45px !important;
+        color: skyblue !important;
+        cursor: pointer !important;
+    }
+    
+}

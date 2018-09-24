@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserlistComponent } from './userlist.component';
 import { Routes, RouterModule } from '@angular/router';
-import { LoaderModule } from '../loader/loader.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
 import { FilterPipe } from '../../pipes/filter.pipe';
