@@ -20,9 +20,17 @@
         display: block;
     }
     ::ng-deep .add-job-attributes{
-        font-size: 45px !important;
+        font-size: 30px !important;
         color: skyblue !important;
         cursor: pointer !important;
+    }
+    .form-group{
+        i{
+            color : red;
+            cursor: pointer;
+            padding-left: 4px; 
+            font-size: 30px;
+        }
     }
     
 }

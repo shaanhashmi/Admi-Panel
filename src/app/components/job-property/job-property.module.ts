@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { JobPropertyComponent } from './job-property.component';
 import { MatCardModule, MatButtonModule, MatChipsModule } from '@angular/material';
 import { JobPropertiesComponentsModule } from '../job-properties-components/job-properties-components.module';
+import { FilterPipe } from '../../pipes/filter.pipe';
 
 @NgModule({
   imports: [
@@ -16,3 +17,4 @@ import { JobPropertiesComponentsModule } from '../job-properties-components/job-
   exports: [JobPropertyComponent]
 })
 export class JobPropertyModule { }
+

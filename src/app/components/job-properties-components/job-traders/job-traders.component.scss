@@ -12,7 +12,19 @@
         top: 40px;
         right: 10px;
     }
+     mat-chip-list {
+       mat-chip{
+           span{
+               cursor: pointer;
+               padding-right: 10px;
+           }
+       }
+   }
+   mat-card-title{
+       font-size: 14px;
+       font-weight: 500;
+   }
     button:focus {
-        outline: none;
+        outline: none !important;
     }
 }

@@ -39,6 +39,13 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
+                path: 'edit-job/:id',
+                loadChildren: './components/edit-job/edit-job.module#EditJobModule',
+                data: {
+                    title: 'Edit Jobs'
+                },
+                canActivate: [AuthGuardService]
+            }, {
                 path: 'users',
                 loadChildren: './components/userlist/userlist.module#UserlistModule',
                 data: {

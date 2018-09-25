@@ -17,7 +17,8 @@ export class JobsComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
-    displayedColumns: string[] = ['jobTitle', 'propertyType', 'jobStart', 'postExpiry', 'jobStatus', 'actions'];
+    displayedColumns: string[] = ['jobTitle', 'propertyType', 'jobLocation', 'jobStart', 'postExpiry', 'jobStatus', 'actions'];
+    transformToLowerCaseArr: string[] = ['jobTitle', 'propertyType', 'jobLocation', 'jobStart', 'postExpiry'];
     jobList: any[] = []
     dataSource = new MatTableDataSource(this.jobList);
 
@@ -49,8 +50,7 @@ export class JobsComponent implements OnInit {
         this.loader = true;
         this.apiAuth.authGet(`${ApiUrl.getAllJobs}/?page=${pageNo}`).subscribe(res => {
             this.loader = false;
-
-            this.jobList = res.jobList;
+            this.jobList = this.apiAuth.transformToLowerCase(this.transformToLowerCaseArr, res.jobList);;
             this.dataSource = new MatTableDataSource(this.jobList);
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
@@ -61,10 +61,12 @@ export class JobsComponent implements OnInit {
         })
     }
 
+
     openDialog() {
         this.cnfbox.openDialog()
             .subscribe(confirm => console.log(confirm))
     }
+
     color(jobObj) {
         console.log(jobObj.jobStatus);
 
@@ -89,6 +91,12 @@ export class JobsComponent implements OnInit {
 
             })
     }
+
+    onUpdate(job) {
+        this.authService.setJob(job)
+        this.router.navigate(['admin/edit-job', job._id])
+    }
+
     onView(job) {
         this.authService.setJob(job)
         this.router.navigate(['admin/jobs', job._id])

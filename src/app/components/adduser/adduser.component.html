@@ -7,7 +7,103 @@
                         <strong>Add User</strong>
                     </div>
                     <div class="card-body">
-                        <mat-card class="mat-elevation-z8">
+                        <mat-card>
+                            <mat-card-content class="d-flex justify-content-between p-4">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="first">First Name<sup>*</sup></label>
+                                            <input type="text" class="form-control" id="first" formControlName="first"
+                                                placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.first.errors }">
+                                            <div *ngIf="submitted && f.first.errors" class="invalid-feedback">
+                                                <div *ngIf="f.first.errors.required">First name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="last">Last Name</label>
+                                            <input type="text" class="form-control" id="last" formControlName="last"
+                                                placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="userRole">Role<sup>*</sup></label>
+                                            <select class="custom-select" class="form-control" id="userRole"
+                                                formControlName="userRole">
+                                                <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="email">Email<sup>*</sup></label>
+                                            <input type="email" class="form-control" id="email" formControlName="email"
+                                                placeholder="Enter your email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="password">Password<sup>*</sup></label>
+                                            <input type="password" class="form-control" id="password" formControlName="password"
+                                                placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                                <div *ngIf="f.password.errors.minlength">Password must at least 6 digit
+                                                    long</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="confirmPassword">Confirm Password<sup>*</sup></label>
+                                            <input type="password" class="form-control" id="confirmPassword"
+                                                formControlName="confirmPassword" placeholder="Enter your confirm password"
+                                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                                <div *ngIf="f.confirmPassword.errors.required">Confirm password
+                                                    required</div>
+                                                <div *ngIf="f.confirmPassword.errors?.invalid">Confirm Password don't
+                                                    match</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="postcode">Postal Code</label>
+                                            <input type="tel" (keypress)="disableText($event)" class="form-control" id="postcode"
+                                                formControlName="postcode" minlength="4" maxlength="6" placeholder="Enter your postal code"
+                                                [ngClass]="{ 'is-invalid': submitted && f.postcode.errors }">
+                                            <div *ngIf="submitted && f.postcode.errors" class="invalid-feedback">
+                                                <div *ngIf="f.postcode.errors.required">Postcode is required</div>
+                                                <div *ngIf="f.postcode.errors.minlength">Postcode must at least
+                                                    4 digit long</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
+                                                formControlName="phone" minlength="10" maxlength="10" placeholder="Enter your phone"
+                                                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="f.phone.errors.required">Phone number required</div>
+                                                <div *ngIf="f.phone.errors.minlength">Phone number must at least 10
+                                                    digit
+                                                    long</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                        <!-- <mat-card class="mat-elevation-z8">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -98,8 +194,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </mat-card>
+                        </mat-card> -->
                     </div>
+
                     <div class="card-footer">
                         <button mat-raised-button type="submit" class="bg-success mr-2"><i class="fa fa-dot-circle-o"></i>
                             Submit</button>

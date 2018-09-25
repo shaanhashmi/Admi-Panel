@@ -4,7 +4,6 @@ import { UserlistComponent } from './userlist.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatPaginatorModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
-import { FilterPipe } from '../../pipes/filter.pipe';
 
 const routes: Routes = [
     {
@@ -26,6 +25,6 @@ const routes: Routes = [
         MatInputModule,
         MatProgressSpinnerModule
     ],
-    declarations: [UserlistComponent, FilterPipe]
+    declarations: [UserlistComponent]
 })
 export class UserlistModule { }

@@ -12,10 +12,11 @@ export class JobAttributesService {
 
   constructor(private dialog: MatDialog) { }
 
-  openAddDialog() {
+  openAddDialog(data?: any) {
     return new Observable((observer) => {
       this.jobDialogRef = this.dialog.open(JobAttributesComponent, {
         width: '450px',
+        data: data
       });
 
       this.jobDialogRef.afterClosed().subscribe(result => {

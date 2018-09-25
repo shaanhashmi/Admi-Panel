@@ -60,6 +60,7 @@ import { JobAttributesModule } from './components/modals/job-attributes/job-attr
         AppComponent,
         ...APP_CONTAINERS,
         LoginComponent,
+
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

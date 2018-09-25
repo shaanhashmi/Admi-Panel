@@ -10,10 +10,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
+.sidebar-fixed .sidebar{top:0px;bottom: 0px;}
 .font-size-14px{
     font-size: 14px !important;
 }
-
+.header-fixed .app-header{top: 0px;}
 .font-size-16px{
     font-size: 16px !important;
 }
@@ -21,7 +22,14 @@
 .overflow-x-auto{
     overflow-x:auto;
 }
-
+.sidebar-fixed .app-header + .app-body .sidebar {
+    height: calc(100vh - 0px);
+    padding-top: 55px;
+}
+.cdk-overlay-container {
+    position: fixed;
+    z-index: 1035;
+}
 
 a.bg-danger,
 button.bg-danger {
@@ -51,3 +59,34 @@ button.bg-success{
 .font-size-12px{
     font-size:12px;
 }
+
+// :host{
+    .chips{
+        min-width: 120px;
+        padding: 10px;
+    }
+
+    .chips > i{
+        cursor: pointer;
+    }
+
+    .action-buttons{
+        top: 40px;
+        right: 10px;
+    }
+     mat-chip-list {
+       mat-chip{
+           span{
+               cursor: pointer;
+               padding-right: 10px;
+           }
+       }
+   }
+   mat-card-title{
+       font-size: 14px;
+       font-weight: 500;
+   }
+    button:focus {
+        outline: none !important;
+    }
+// }
