@@ -1,17 +1,21 @@
 <div class="card-body">
   <mat-card class="example-card p-0">
-    <mat-card-header class="bg-light">
-      <mat-card-title class="mb-0 p-2">
-        Job Works
+    <mat-card-header class="bg-light d-flex justify-content-between">
+      <mat-card-title class="mb-0 pt-3 p-2">
+        JOB WORKS
       </mat-card-title>
+      <mat-form-field class="mr-3 pt-1">
+        <input matInput [(ngModel)]="searchValue" name="searchValue" placeholder="Search">
+      </mat-form-field>
     </mat-card-header>
     <mat-card-content class="d-flex justify-content-between p-4">
       <mat-chip-list>
-        <mat-chip *ngFor="let jobWork of jobWorks; let i = index;" class="chips pl-3 justify-content-between">
-          {{jobWork.jobWork}} <i class="material-icons" (click)="onDelete(i)">highlight_off</i>
+        <mat-chip *ngFor="let jobWork of jobWorks | filter : searchValue; let i = index;" class="chips pl-3 justify-content-between">
+          <span (click)="onUpdate(jobWork, i)" matTooltip="Click to Edit" aria-label="Button that displays a tooltip when focused or hovered over">{{jobWork.jobWork}}</span>
+          <i class="material-icons" (click)="onDelete(i, jobWork._id)">highlight_off</i>
         </mat-chip>
       </mat-chip-list>
-      <button mat-mini-fab color="primary" (click)="addRoomLevel('Added')">
+      <button mat-mini-fab color="primary" (click)="onSave()">
         <i class="material-icons">add</i>
       </button>
     </mat-card-content>

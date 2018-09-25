@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ApiUrl } from '../../../services/api.url.service';
 import { AuthGuardService } from '../../../services/auth-guard.service';
@@ -18,23 +18,24 @@ export class JobAttributesComponent implements OnInit {
   jobAttrForm: FormGroup;
   items: FormArray;
   loader: boolean;
+  dataToEdit: object;
 
   constructor(
     public dialogRef: MatDialogRef<JobAttributesComponent>,
     private fb: FormBuilder,
-    private apiAuth: ApiAuthService
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { this.dataToEdit = data }
 
   ngOnInit() {
 
     this.jobAttrForm = this.fb.group({
-      items: this.fb.array([this.createItem()])
+      items: this.fb.array([this.createItem(this.dataToEdit)])
     })
   }
 
-  createItem(): FormGroup {
+  createItem(data?: any): FormGroup {
     return this.fb.group({
-      name: ['', [Validators.required]]
+      name: [data.jobWork || data.jobTrade || '', [Validators.required]]
     });
   }
 
@@ -44,7 +45,7 @@ export class JobAttributesComponent implements OnInit {
 
   addItem(): void {
     this.items = this.jobAttrForm.get('items') as FormArray;
-    this.items.push(this.createItem());
+    this.items.push(this.createItem({}));
   }
 
   removeItem(index: number): void {
@@ -55,23 +56,26 @@ export class JobAttributesComponent implements OnInit {
 
   onSubmit(f) {
     console.log(f.items.value)
-
     if (f.items.valid) {
       const data = {
-        jobWork: f.items.value[0].name
+        name: f.items.value[0].name
       }
-      this.apiAuth.authPost(`${ApiUrl.jobWork}`, data).subscribe(res => {
-        this.loader = false;
-        console.log(res);
-      }, err => {
-        this.loader = false;
-        console.log(err);
-        throw err
-      })
+      this.sendDataAfterClose(data);
     }
   }
 
-  onNoClick(confirmation): void {
+  onUpdate(f) {
+    console.log(f.items.value)
+    if (f.items.valid) {
+      const data = {
+        name: f.items.value[0].name,
+        _id: this.dataToEdit["_id"]
+      }
+      this.sendDataAfterClose(data);
+    }
+  }
+
+  sendDataAfterClose(confirmation): void {
     this.dialogRef.close(confirmation);
   }
 

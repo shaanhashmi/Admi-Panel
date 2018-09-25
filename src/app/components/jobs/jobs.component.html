@@ -18,7 +18,12 @@
                             <ng-container matColumnDef="propertyType">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark font-size-14px">
                                     Property Type </th>
-                                <td mat-cell *matCellDef="let element"> {{element.propertyType}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.propertyType | titlecase}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="jobLocation">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark font-size-14px">
+                                    Job Location </th>
+                                <td mat-cell *matCellDef="let element"> {{element.jobLocation | titlecase}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="jobStart">
@@ -50,7 +55,7 @@
                                     <a mat-icon-button color="primary" (click)="onView(element)">
                                         <i class="material-icons"> visibility </i>
                                     </a>
-                                    <a mat-icon-button color="primary">
+                                    <a mat-icon-button color="primary" (click)="onUpdate(element)">
                                         <i class="material-icons"> create </i>
                                     </a>
                                     <a mat-icon-button color="warn">

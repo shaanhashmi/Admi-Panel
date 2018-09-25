@@ -15,5 +15,25 @@
     button:focus {
         outline: none;
     }
-   
+   mat-chip-list {
+       mat-chip{
+           span{
+               cursor: pointer;
+           }
+       }
+   }
+   mat-card-title{
+       font-size: 14px;
+       font-weight: 500;
+   }
+    button:focus {
+        outline: none !important;
+    }
+    .form-group{
+        i{
+            color : red;
+            cursor: pointer;
+            padding-left: 10px; 
+        }
+    }
 }

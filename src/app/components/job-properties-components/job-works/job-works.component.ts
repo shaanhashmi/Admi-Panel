@@ -14,6 +14,7 @@ export class JobWorksComponent implements OnInit {
 
   @Input() jobWorks: any[];
   loader: boolean;
+  searchValue: string = '';
 
   constructor(
     private cnfboxService: ConfirmBoxService,
@@ -25,13 +26,16 @@ export class JobWorksComponent implements OnInit {
   }
 
 
-  onDelete(id) {
-    this.cnfboxService.openDialog()
-      .subscribe(confirm => {
-        console.log(confirm)
-        if (confirm === 'yes') {
-          this.apiAuth.authGet(`${ApiUrl.jobWork}`).subscribe(res => {
+  onSave() {
+    this.jobAttrService.openAddDialog({})
+      .subscribe(data => {
+        if (data && Object.keys(data).length) {
+          const payload = {
+            "jobWork": data['name']
+          }
+          this.apiAuth.authPost(`${ApiUrl.jobWork}`, payload).subscribe(res => {
             this.loader = false;
+            this.jobWorks.push(res.jobwork);
             console.log(res);
           }, err => {
             this.loader = false;
@@ -42,10 +46,48 @@ export class JobWorksComponent implements OnInit {
       })
   }
 
-  addRoomLevel(id) {
-    this.jobAttrService.openAddDialog()
-      .subscribe(added => {
-        console.log(added)
+  onUpdate(data, index) {
+    this.jobAttrService.openAddDialog(data)
+      .subscribe(updatedData => {
+        if (updatedData && Object.keys(updatedData).length) {
+          const payload = {
+            jobWork: updatedData['name'],
+            _id: updatedData["_id"]
+          };
+          this.apiAuth.authUpdate(`${ApiUrl.jobWork}`, payload).subscribe(res => {
+            this.loader = false;
+            if (res.success)
+              this.jobWorks[index] = payload;
+            console.log(res);
+          }, err => {
+            this.loader = false;
+            console.log(err);
+            throw err
+          })
+        }
+      })
+  }
+
+
+  onDelete(index, id) {
+    this.cnfboxService.openDialog()
+      .subscribe(confirm => {
+        const payload = {
+          "_id": id
+        }
+        console.log(confirm, payload)
+        if (confirm === 'yes') {
+          this.apiAuth.authDelete(`${ApiUrl.jobWork}`, id).subscribe(res => {
+            this.loader = false;
+            if (res.success) {
+              this.jobWorks.splice(index, 1);
+            }
+          }, err => {
+            this.loader = false;
+            console.log(err);
+            throw err;
+          })
+        }
       })
   }
 

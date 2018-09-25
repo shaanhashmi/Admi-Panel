@@ -40,7 +40,7 @@ export class ApiAuthService {
     }
 
     authDelete(url, id): Observable<any> {
-        return this.http.delete(url, id)
+        return this.http.delete(`${environment.baseUrl}/${url}/${id}`)
             .pipe(
                 catchError(err => {
                     return throwError(err || 'Server error');

@@ -1,0 +1,14 @@
+:host{
+    button:focus {
+        outline: none;
+    }
+    button {
+        width:120px;
+        padding: 2px 5px;
+        font-size: 15px;
+    } & i {  
+        font-size: 17px;
+        padding-bottom: 3px;
+        padding-right: 5px;
+    }
+}
