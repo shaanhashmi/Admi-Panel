@@ -53,6 +53,13 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
+                path: 'user-details/:id',
+                loadChildren: './components/users/view-user/view-user.module#ViewUserModule',
+                data: {
+                    title: 'User Details'
+                },
+                canActivate: [AuthGuardService]
+            }, {
                 path: 'admin',
                 loadChildren: './components/admin/admin.module#AdminModule',
                 data: {

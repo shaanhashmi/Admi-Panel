@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { AdduserComponent } from './adduser.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,9 +19,10 @@ const routes: Routes = [
         ReactiveFormsModule,
         RouterModule.forChild(routes),
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
     ],
     declarations: [AdduserComponent],
-    exports: [AdduserComponent]
+    exports: [AdduserComponent],
+    providers: [TitleCasePipe]
 })
 export class AdduserModule { }

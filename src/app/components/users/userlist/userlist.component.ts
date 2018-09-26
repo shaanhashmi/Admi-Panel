@@ -57,8 +57,9 @@ export class UserlistComponent implements OnInit {
         console.log(this.dataSource.filteredData)
     }
 
-    onView(id) {
-        console.log("onView", id);
+    onView(user) {
+        this.apiAuth.setData(user)
+        this.router.navigate(['admin/user-details', user._id]);
     }
 
     onUpdate(user) {

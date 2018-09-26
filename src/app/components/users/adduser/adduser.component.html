@@ -44,7 +44,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="userRole">User Role<sup>*</sup></label>
-                                            <select class="custom-select" class="form-control" formControlName="userRole">
+                                            <select class="custom-select" class="form-control" formControlName="userRole"
+                                                disabled>
                                                 <option [value]="role" *ngFor="let role of roles">{{role | titlecase}}</option>
                                             </select>
                                         </div>
@@ -91,8 +92,8 @@
                                         <div class="form-group">
                                             <label for="status">Status<sup>*</sup></label>
                                             <select class="custom-select" class="form-control" formControlName="status">
-                                                <option value="false">Deactive</option>
-                                                <option value="true">Active</option>
+                                                <option [value]="user.status" *ngFor="let user of userStatus">{{user.value}}</option>
+                                                <!-- <option value="false">Deactive</option> -->
                                             </select>
                                         </div>
                                     </div>
