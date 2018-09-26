@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiUrl } from '../../services/api.url.service';
-import { ApiAuthService } from '../../services/api.auth.service';
+import { ApiUrl } from '../../../services/api.url.service';
+import { ApiAuthService } from '../../../services/api.auth.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
-import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
+import { ConfirmBoxService } from '../../modals/confirm-box/confirm-box.service';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -61,8 +61,9 @@ export class UserlistComponent implements OnInit {
         console.log("onView", id);
     }
 
-    onUpdate(id) {
-        this.router.navigate(['admin/addusers', id])
+    onUpdate(user) {
+        this.apiAuth.setData(user)
+        this.router.navigate(['admin/addusers', user._id])
     }
 
     onDelete(id) {

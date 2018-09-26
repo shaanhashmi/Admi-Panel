@@ -93,12 +93,12 @@ export class JobsComponent implements OnInit {
     }
 
     onUpdate(job) {
-        this.authService.setJob(job)
+        this.authService.setData(job)
         this.router.navigate(['admin/edit-job', job._id])
     }
 
     onView(job) {
-        this.authService.setJob(job)
+        this.authService.setData(job)
         this.router.navigate(['admin/jobs', job._id])
     }
 

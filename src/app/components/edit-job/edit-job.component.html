@@ -33,10 +33,21 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="jobStart">Job Start</label>
-                      <input type="text" class="form-control" formControlName="jobStart" placeholder="Job Start"
-                        [ngClass]="{ 'is-invalid': submitted && f.jobStart.errors }">
-                      <div *ngIf="submitted && f.jobStart.errors" class="invalid-feedback">
-                        <div *ngIf="f.jobStart.errors.required">Job start is required</div>
+                      <div class="d-flex justify-content-between">
+                        <input [matDatepicker]="picker1" class="form-control" placeholder="Choose Date" formControlName="jobStart">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="postExpiry">Job Expiry</label>
+                      <div class="d-flex justify-content-between">
+                        <input [matDatepicker]="picker2" class="form-control" formControlName="postExpiry" placeholder="Choose Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
                       </div>
                     </div>
                   </div>
@@ -56,7 +67,7 @@
                     <div class="form-group">
                       <label for="isInterior">Interior</label>
                       <input type="tel" (keypress)="disableText($event)" class="form-control" id="isInterior"
-                        formControlName="isInterior" minlength="4" maxlength="6" placeholder="Enter your postal code"
+                        formControlName="isInterior" minlength="1" maxlength="6" placeholder="Enter your interior"
                         [ngClass]="{ 'is-invalid': submitted && f.isInterior.errors }">
                       <div *ngIf="submitted && f.isInterior.errors" class="invalid-feedback">
                         <div *ngIf="f.isInterior.errors.required">Interior is required</div>
@@ -68,11 +79,10 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="isNewConstruction">New Construction</label>
-                      <input type="tel" (keypress)="disableText($event)" class="form-control" id="isNewConstruction"
-                        formControlName="isNewConstruction" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.isNewConstruction.errors }">
+                      <input type="tel" class="form-control" id="isNewConstruction" formControlName="isNewConstruction"
+                        minlength="1" maxlength="6" placeholder="Enter your new construction" [ngClass]="{ 'is-invalid': submitted && f.isNewConstruction.errors }">
                       <div *ngIf="submitted && f.isNewConstruction.errors" class="invalid-feedback">
-                        <div *ngIf="f.isNewConstruction.errors.required">Interior is required</div>
+                        <div *ngIf="f.isNewConstruction.errors.required">New construction is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
                       </div>
                     </div>
@@ -82,8 +92,7 @@
                     <div class="form-group">
                       <label for="isOccupied">Occupied</label>
                       <input type="tel" (keypress)="disableText($event)" class="form-control" id="isOccupied"
-                        formControlName="isOccupied" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.isOccupied.errors }">
+                        formControlName="isOccupied" minlength="1" maxlength="6" placeholder="Enter occupied" [ngClass]="{ 'is-invalid': submitted && f.isOccupied.errors }">
                       <div *ngIf="submitted && f.isOccupied.errors" class="invalid-feedback">
                         <div *ngIf="f.isOccupied.errors.required">Occupied is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
@@ -95,8 +104,7 @@
                     <div class="form-group">
                       <label for="isPostAs">Posts</label>
                       <input type="tel" (keypress)="disableText($event)" class="form-control" id="isPostAs"
-                        formControlName="isPostAs" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.isPostAs.errors }">
+                        formControlName="isPostAs" minlength="1" maxlength="6" placeholder="Enter posts" [ngClass]="{ 'is-invalid': submitted && f.isPostAs.errors }">
                       <div *ngIf="submitted && f.isPostAs.errors" class="invalid-feedback">
                         <div *ngIf="f.isPostAs.errors.required">Posts is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
@@ -108,8 +116,7 @@
                     <div class="form-group">
                       <label for="jobCost">Cost</label>
                       <input type="tel" (keypress)="disableText($event)" class="form-control" id="jobCost"
-                        formControlName="jobCost" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.jobCost.errors }">
+                        formControlName="jobCost" minlength="1" maxlength="6" placeholder="Enter Cost" [ngClass]="{ 'is-invalid': submitted && f.jobCost.errors }">
                       <div *ngIf="submitted && f.jobCost.errors" class="invalid-feedback">
                         <div *ngIf="f.jobCost.errors.required">Cost is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
@@ -119,33 +126,31 @@
 
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="jobLocation">Quotes</label>
+                      <label for="jobLocation">Job Location</label>
                       <input type="text" class="form-control" id="jobLocation" formControlName="jobLocation" minlength="10"
                         maxlength="60" placeholder="Enter You Job Location" [ngClass]="{ 'is-invalid': submitted && f.jobLocation.errors }">
                       <div *ngIf="submitted && f.jobLocation.errors" class="invalid-feedback">
-                        <div *ngIf="f.jobLocation.errors.required">Interior is required</div>
-                        <div *ngIf="f.jobLocation.errors.minlength">Interior must at least 1 digit long</div>
+                        <div *ngIf="f.jobLocation.errors.required">Job location is required</div>
+                        <!-- <div *ngIf="f.jobLocation.errors.minlength">Interior must at least 1 digit long</div> -->
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="isQuote">Quotes</label>
+                      <label for="isQuote">Quote</label>
                       <input type="tel" (keypress)="disableText($event)" class="form-control" id="isQuote"
-                        formControlName="isQuote" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.isQuote.errors }">
+                        formControlName="isQuote" minlength="1" maxlength="6" placeholder="Enter Quote" [ngClass]="{ 'is-invalid': submitted && f.isQuote.errors }">
                       <div *ngIf="submitted && f.isQuote.errors" class="invalid-feedback">
-                        <div *ngIf="f.isQuote.errors.required">Interior is required</div>
+                        <div *ngIf="f.isQuote.errors.required">Quote is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="matsupplied">Quotes</label>
-                      <input type="text" (keypress)="disableText($event)" class="form-control" id="matsupplied"
-                        formControlName="matsupplied" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.matsupplied.errors }">
+                      <label for="matsupplied">Mat Supplied</label>
+                      <input type="text" class="form-control" id="matsupplied" formControlName="matsupplied"
+                        placeholder="Enter mat supplied" [ngClass]="{ 'is-invalid': submitted && f.matsupplied.errors }">
                       <div *ngIf="submitted && f.matsupplied.errors" class="invalid-feedback">
                         <div *ngIf="f.matsupplied.errors.required">Interior is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
@@ -154,12 +159,12 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="toolsupDetails">Quotes</label>
+                      <label for="toolsupDetails">Tools Details</label>
                       <input type="text" (keypress)="disableText($event)" class="form-control" id="toolsupDetails"
-                        formControlName="toolsupDetails" minlength="4" maxlength="6" placeholder="Enter your postal code"
+                        formControlName="toolsupDetails" minlength="1" maxlength="6" placeholder="Enter tools details"
                         [ngClass]="{ 'is-invalid': submitted && f.toolsupDetails.errors }">
                       <div *ngIf="submitted && f.toolsupDetails.errors" class="invalid-feedback">
-                        <div *ngIf="f.toolsupDetails.errors.required">Interior is required</div>
+                        <div *ngIf="f.toolsupDetails.errors.required">Tools details is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
                       </div>
                     </div>
@@ -167,17 +172,15 @@
 
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="toolsupplied">Quotes</label>
-                      <input type="text" (keypress)="disableText($event)" class="form-control" id="toolsupplied"
-                        formControlName="toolsupplied" minlength="4" maxlength="6" placeholder="Enter your postal code"
-                        [ngClass]="{ 'is-invalid': submitted && f.toolsupplied.errors }">
+                      <label for="toolsupplied">Tool Supplied</label>
+                      <input type="text" class="form-control" id="toolsupplied" formControlName="toolsupplied"
+                        placeholder="Enter tool supplied" [ngClass]="{ 'is-invalid': submitted && f.toolsupplied.errors }">
                       <div *ngIf="submitted && f.toolsupplied.errors" class="invalid-feedback">
-                        <div *ngIf="f.toolsupplied.errors.required">Interior is required</div>
+                        <div *ngIf="f.toolsupplied.errors.required">Tool supplied is required</div>
                         <!-- <div *ngIf="f.isNewConstruction.errors.minlength">Interior must at least 1 digit long</div> -->
                       </div>
                     </div>
                   </div>
-
                 </div>
               </mat-card-content>
             </mat-card>

@@ -33,7 +33,7 @@ export const routes: Routes = [
                 canActivate: [AuthGuardService]
             }, {
                 path: 'addusers/:id',
-                loadChildren: './components/adduser/adduser.module#AdduserModule',
+                loadChildren: './components/users/adduser/adduser.module#AdduserModule',
                 data: {
                     title: 'Add Users'
                 },
@@ -47,7 +47,7 @@ export const routes: Routes = [
                 canActivate: [AuthGuardService]
             }, {
                 path: 'users',
-                loadChildren: './components/userlist/userlist.module#UserlistModule',
+                loadChildren: './components/users/userlist/userlist.module#UserlistModule',
                 data: {
                     title: 'Users'
                 },

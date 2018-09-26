@@ -10,6 +10,7 @@ import { ApiUrl } from "./api.url.service";
 })
 export class ApiAuthService {
     jobData: any
+    data: any;
     constructor(
         private http: HttpClient
     ) { }
@@ -59,26 +60,23 @@ export class ApiAuthService {
         return dataArr
     }
 
-    setJob(data) {
-        this.jobData = data
+    setData(data) {
+        this.data = data
     };
 
-    getJob(id): Observable<any> {
-        if (this.jobData)
+    getDataById(id): Observable<any> {
+        if (this.data)
             return new Observable(observer => {
-                observer.next(this.jobData)
+                observer.next(this.data)
             })
-        return this.http.get(`${environment.baseUrl}/${ApiUrl.jobdetails}/${id}`)
+        return this.http.get(`${environment.baseUrl}/${id}`)
             .pipe(
                 map(res => {
-                    this.jobData = res
-                    return this.jobData = this.jobData.details[0];
+                    return res;
                 }),
                 catchError(err => {
                     return throwError(err || 'Server error');
                 })
             );
     }
-
-
 }

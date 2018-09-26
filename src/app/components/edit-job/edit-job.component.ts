@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ApiUrl } from '../../services/api.url.service';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { PasswordValidators } from '../../password-validators';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ApiAuthService } from '../../services/api.auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -14,11 +13,9 @@ export class EditJobComponent implements OnInit {
 
   @ViewChild('datePicker') dataPicker: ElementRef;
   submitted: boolean;
-  date: Date;
   jobStatusArr = ['ongoing', 'post', 'complete', 'Inactive'];
   jobid: any;
   editJOb: FormGroup;
-
   constructor(
     private fb: FormBuilder,
     private apiAuth: ApiAuthService,
@@ -27,39 +24,40 @@ export class EditJobComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.initForm({});
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.apiAuth.getJob(params.get('id'))
+      this.apiAuth.getDataById(`${ApiUrl.jobdetails}/${params.get('id')}`)
         .subscribe(job => {
-          this.initForm(job);
+          if (job && job['details'])
+            this.initForm(job['details'][0]);
+          else
+            this.initForm(job);
         })
     })
   }
 
   initForm(job?: any) {
-    console.log(job);
     this.editJOb = this.fb.group({
-      jobTitle: ['', [Validators.required]],
-      propertyType: ['', [Validators.required]],
-      jobStart: ['', [Validators.required]],
-      jobStatus: ['', [Validators.required, Validators.email]],
-      isInterior: ['', [Validators.required]],
-      isNewConstruction: ['', [Validators.required]],
-      isOccupied: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      isPostAs: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      isQuote: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      jobCost: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      jobLocation: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
-      // matsupDetails: ['', [Validators.required]],
-      matsupplied: ['', [Validators.required]],
-      toolsupDetails: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
-      toolsupplied: ['', [Validators.required]],
+      jobTitle: [job.jobTitle || '', [Validators.required]],
+      propertyType: [job.propertyType || '', [Validators.required]],
+      jobStart: [job.jobStart || '', [Validators.required]],
+      postExpiry: [job.postExpiry || '', [Validators.required]],
+      jobStatus: [job.jobStatus || '', [Validators.required, Validators.email]],
+      isInterior: [job.isInterior || '', [Validators.required]],
+      isNewConstruction: [job.isNewConstruction || '', [Validators.required]],
+      isOccupied: [job.isOccupied || '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+      isPostAs: [job.isPostAs || '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+      isQuote: [job.isQuote || '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+      jobCost: [job.jobCost || '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+      jobLocation: [job.jobLocation || '', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
+      matsupplied: [job.matsupplied || '', [Validators.required]],
+      toolsupDetails: [job.toolsupDetails || '', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]],
+      toolsupplied: [job.toolsupplied || '', [Validators.required]],
     },
     );
   }
 
   get f() {
-    console.log(this.editJOb.controls);
     return this.editJOb.controls;
   }
 
@@ -69,7 +67,8 @@ export class EditJobComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.editJOb.value, this.editJOb.valid);
+    console.log(this.editJOb.value);
+    return;
     if (this.editJOb.valid) {
       this.apiAuth.authPost(`${ApiUrl.manageAdmin}`, this.editJOb.value).subscribe(res => {
         console.log(res);

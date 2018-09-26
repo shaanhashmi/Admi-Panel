@@ -49,8 +49,8 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-dark font-size-16px">
                   Status </th>
                 <td mat-cell *matCellDef="let element">
-                  <span *ngIf="element?.status" class="badge badge-success">Active</span>
-                  <span *ngIf="element?.status" class="badge badge-secondary">Deactive</span>
+                  <span *ngIf="element?.status" class="badge badge-success font-weight-normal font-size-12px">Active</span>
+                  <span *ngIf="!element?.status" class="badge badge-danger font-weight-normal font-size-12px">Deactive</span>
                 </td>
               </ng-container>
 
@@ -60,7 +60,7 @@
                   <a mat-icon-button color="primary" (click)="onView(element._id)">
                     <i class="material-icons"> visibility </i>
                   </a>
-                  <a mat-icon-button color="primary" (click)="onUpdate(element._id)">
+                  <a mat-icon-button color="primary" (click)="onUpdate(element)">
                     <i class="material-icons"> create </i>
                   </a>
                   <a mat-icon-button color="warn" (click)="onDelete(element._id)">

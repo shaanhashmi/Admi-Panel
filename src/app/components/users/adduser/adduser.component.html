@@ -29,10 +29,23 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="userRole">Role<sup>*</sup></label>
-                                            <select class="custom-select" class="form-control" id="userRole"
-                                                formControlName="userRole">
-                                                <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+                                            <label for="phone">Phone</label>
+                                            <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
+                                                formControlName="phone" minlength="10" maxlength="10" placeholder="Enter your phone"
+                                                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="f.phone.errors.required">Phone number required</div>
+                                                <div *ngIf="f.phone.errors.minlength">Phone number must at least 10
+                                                    digit long.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="userRole">User Role<sup>*</sup></label>
+                                            <select class="custom-select" class="form-control" formControlName="userRole">
+                                                <option [value]="role" *ngFor="let role of roles">{{role | titlecase}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -49,30 +62,17 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="password">Password<sup>*</sup></label>
-                                            <input type="password" class="form-control" id="password" formControlName="password"
-                                                placeholder="Enter your password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                                <div *ngIf="f.password.errors.required">Password is required</div>
-                                                <div *ngIf="f.password.errors.minlength">Password must at least 6 digit
-                                                    long</div>
+                                            <label for="userType">User Type<sup>*</sup></label>
+                                            <input type="text" class="form-control" formControlName="userType"
+                                                placeholder="Enter User type" [ngClass]="{ 'is-invalid': submitted && f.userType.errors }">
+                                            <div *ngIf="submitted && f.userType.errors" class="invalid-feedback">
+                                                <div *ngIf="f.userType.errors.required">User type is required</div>
+                                                <!-- <div *ngIf="f.userType.errors.minlength">userType must at least 6 digit
+                                                    long</div> -->
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="confirmPassword">Confirm Password<sup>*</sup></label>
-                                            <input type="password" class="form-control" id="confirmPassword"
-                                                formControlName="confirmPassword" placeholder="Enter your confirm password"
-                                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-                                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                                                <div *ngIf="f.confirmPassword.errors.required">Confirm password
-                                                    required</div>
-                                                <div *ngIf="f.confirmPassword.errors?.invalid">Confirm Password don't
-                                                    match</div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="postcode">Postal Code</label>
@@ -86,18 +86,14 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="phone">Phone</label>
-                                            <input type="tel" (keypress)="disableText($event)" class="form-control" id="phone"
-                                                formControlName="phone" minlength="10" maxlength="10" placeholder="Enter your phone"
-                                                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
-                                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                                                <div *ngIf="f.phone.errors.required">Phone number required</div>
-                                                <div *ngIf="f.phone.errors.minlength">Phone number must at least 10
-                                                    digit
-                                                    long</div>
-                                            </div>
+                                            <label for="status">Status<sup>*</sup></label>
+                                            <select class="custom-select" class="form-control" formControlName="status">
+                                                <option value="false">Deactive</option>
+                                                <option value="true">Active</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +196,7 @@
                     <div class="card-footer">
                         <button mat-raised-button type="submit" class="bg-success mr-2"><i class="fa fa-dot-circle-o"></i>
                             Submit</button>
-                        <button mat-raised-button type="reset" class="bg-danger"><i class="fa fa-ban"></i> Reset</button>
+                        <!-- <button mat-raised-button type="reset" class="bg-danger"><i class="fa fa-ban"></i> Reset</button> -->
                     </div>
                 </form>
             </div>
