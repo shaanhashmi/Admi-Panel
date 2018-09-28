@@ -15,7 +15,7 @@ const routes: Routes = [
         CommonModule,
         RouterModule.forChild(routes),
         MatTabsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
     ],
     declarations: [ViewJobComponent]
 })

@@ -24,6 +24,7 @@ export class ViewJobComponent implements OnInit {
     ngOnInit() {
         this.loader = true
         this.authService.getDataById(this.jobid).subscribe(res => {
+            console.log(res);
             this.jobData = res;
             this.loader = false
         })

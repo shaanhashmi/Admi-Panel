@@ -48,7 +48,7 @@ export class JobsComponent implements OnInit {
 
     getUsers(pageNo) {
         this.loader = true;
-        this.apiAuth.authGet(`${ApiUrl.getAllJobs}/?page=${pageNo}`).subscribe(res => {
+        this.apiAuth.authGet(`${ApiUrl.jobs}/?page=${pageNo}`).subscribe(res => {
             this.loader = false;
             this.jobList = this.apiAuth.transformToLowerCase(this.transformToLowerCaseArr, res.jobList);;
             this.dataSource = new MatTableDataSource(this.jobList);
