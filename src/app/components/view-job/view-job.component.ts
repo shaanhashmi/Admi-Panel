@@ -10,6 +10,7 @@ import { ApiAuthService } from '../../services/api.auth.service';
 export class ViewJobComponent implements OnInit {
     jobData: any
     jobid: any;
+    loader: boolean
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
@@ -21,8 +22,10 @@ export class ViewJobComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loader = true
         this.authService.getDataById(this.jobid).subscribe(res => {
             this.jobData = res;
+            this.loader = false
         })
     }
 

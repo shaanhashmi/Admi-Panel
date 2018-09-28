@@ -7,37 +7,122 @@
                         <i class="fa fa-align-justify"></i> {{jobData?.jobTitle | titlecase}}
                     </div>
                 </div>
-                <div class="card-body p-0">
-                    <mat-tab-group class="mat-elevation-z8">
-                        <mat-tab label="Basic Details">
-                            <mat-list>
-                                <mat-list-item>Property Type: {{jobData?.propertyType | titlecase}}</mat-list-item>
-                                <mat-list-item>Job Location: {{jobData?.jobLocation | titlecase}}</mat-list-item>
-                            </mat-list>
-                        </mat-tab>
+                <div class="card-body">
+                    <div class="container pt-2 px-0">
+                        <div *ngIf="loader" class="w-100 d-flex justify-content-center p-5">
+                            <mat-spinner [diameter]="50"></mat-spinner>
+                        </div>
+                        <table *ngIf="!loader" class="table table-bordered border-0">
+                            <tbody>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <td>{{jobData?.jobTitle | titlecase }} </td>
+                                    <th>Job Start</th>
+                                    <td>{{jobData?.jobStart| date:'medium'}}</td>
+                                    <th>Job Expire On</th>
+                                    <td>{{jobData?.postExpiry|date:'medium'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Property Type</th>
+                                    <td>{{jobData?.propertyType| titlecase}}</td>
+                                    <th>Job Location</th>
+                                    <td>{{jobData?.jobLocation| titlecase}}</td>
+                                    <th>Job Status</th>
+                                    <td>{{jobData?.jobStatus | titlecase}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Material Supplied</th>
+                                    <td>{{jobData?.matsupplied || 'N/A' }}</td>
+                                    <th>Material Details</th>
+                                    <td>{{jobData?.matsupDetails || 'N/A' }}</td>
+                                    <th>Contract Edit</th>
+                                    <td>{{jobData?.isContractEdit || 'N/A' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tool Supplied</th>
+                                    <td>{{jobData?.toolsupplied || 'N/A' }}</td>
+                                    <th>Tool Details</th>
+                                    <td>{{jobData?.toolsupDetails || 'N/A' }}</td>
+                                    <th>Job Cost</th>
+                                    <td>{{jobData?.jobCost || 'N/A' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Posted As</th>
+                                    <td>{{jobData?.isPostAs || 'N/A'}}</td>
+                                    <th>Interior</th>
+                                    <td>{{jobData?.isInterior || 'N/A'}}</td>
+                                    <th>Quote</th>
+                                    <td>{{jobData?.isQuote || 'N/A'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Occupied</th>
+                                    <td>{{jobData?.isOccupied || 'N/A'}}</td>
+                                    <th>New Construction</th>
+                                    <td>{{jobData?.isNewConstruction || 'N/A'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <mat-tab-group *ngIf="!loader" class="mat-elevation-z8">
                         <mat-tab label="Add Room">
-                            <mat-list class="pt-5">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">S.No</th>
-                                                <th scope="col">Detail</th>
-                                                <th scope="col">Room</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let data of jobData?.addRoom; let i=index">
-                                                <th scope="row">{{i}}</th>
-                                                <td>{{data?.details | titlecase}}</td>
-                                                <td>{{data?.Room }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </mat-list>
+                            <div class="container pt-3">
+                                <div *ngIf="!jobData?.addRoom.length" class="py-4 text-center">Data not available</div>
+                                <table *ngIf="jobData?.addRoom.length" class="table table-bordered border-0">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Details</th>
+                                            <th>Room</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of jobData?.addRoom; let i=index">
+                                            <td>{{i+1}} </td>
+                                            <td>{{data?.details }} </td>
+                                            <td>{{data?.Room}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </mat-tab>
-                        <mat-tab label="Line Height"> {{jobData?.lineHeight | json}} </mat-tab>
+                        <mat-tab label="Line Height">
+                            <div class="container pt-3">
+                                <div *ngIf="!jobData?.lineHeight.length" class="py-4 text-center">Data not available</div>
+                                <table *ngIf="jobData?.lineHeight.length" class="table table-bordered border-0">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Job Title</th>
+                                            <th>Description</th>
+                                            <th>Job Trade</th>
+                                            <th>Job Work</th>
+                                            <th>Floor Level</th>
+                                            <th>Fixed Cost</th>
+                                            <th>Hourly Cost</th>
+                                            <th>Hourly Total</th>
+                                            <th>Hourly Duration</th>
+                                            <th>Fixed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of jobData?.lineHeight; let i=index">
+                                            <td>{{i+1}} </td>
+                                            <td>{{data?.jobTitle }} </td>
+                                            <td>{{data?.desc}}</td>
+                                            <td>{{data?.jobTrade}}</td>
+                                            <td>{{data?.jobWork}}</td>
+                                            <td>{{data?.floorLevel}}</td>
+                                            <td>{{data?.fixedCost}}</td>
+                                            <td>{{data?.hourlyCost}}</td>
+                                            <td>{{data?.hourlyTotal}}</td>
+                                            <td>{{data?.hourlyDuration}}</td>
+                                            <td>{{data?.isFixed}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-tab>
                         <mat-tab label="GEO"> {{jobData?.geo | json}}</mat-tab>
                     </mat-tab-group>
                 </div>

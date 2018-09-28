@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewJobComponent } from './view-job.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatCardModule, MatTabsModule, MatListModule } from '@angular/material';
+import { MatTabsModule, MatProgressSpinnerModule } from '@angular/material';
 
 const routes: Routes = [
     {
@@ -14,9 +14,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        MatCardModule,
         MatTabsModule,
-        MatListModule
+        MatProgressSpinnerModule
     ],
     declarations: [ViewJobComponent]
 })
