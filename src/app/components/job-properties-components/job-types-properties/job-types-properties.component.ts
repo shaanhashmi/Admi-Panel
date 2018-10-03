@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-job-types-properties',
@@ -7,20 +7,29 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class JobTypesPropertiesComponent implements OnInit {
 
-  @Input() jobTypes: any;
+  @Input() jobTypes: any[];
+  @Input() loader: boolean;
+
+  @Output() save: EventEmitter<any> = new EventEmitter<any>();
+  @Output() update: EventEmitter<any> = new EventEmitter<any>();
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
+
+  searchValue: string = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-
-  removeRoomLevel(id) {
-    console.log('removeRoomLevel', id)
+  onSave() {
+    this.save.emit(true);
   }
 
-  addRoomLevel(id) {
-    console.log(id);
+  onUpdate(data, index) {
+    this.update.emit({ data: data, index: index })
   }
 
+  onDelete(index, id) {
+    this.delete.emit({ index: index, id: id });
+  }
 }

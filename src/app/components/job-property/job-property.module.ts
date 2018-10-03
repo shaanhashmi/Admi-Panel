@@ -4,13 +4,12 @@ import { JobPropertyComponent } from './job-property.component';
 import { MatCardModule, MatButtonModule, MatChipsModule } from '@angular/material';
 import { JobPropertiesComponentsModule } from '../job-properties-components/job-properties-components.module';
 import { FilterPipe } from '../../pipes/filter.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatChipsModule,
+    RouterModule.forChild([{ path: '', component: JobPropertyComponent }]),
     JobPropertiesComponentsModule
   ],
   declarations: [JobPropertyComponent],

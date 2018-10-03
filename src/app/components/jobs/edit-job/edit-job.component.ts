@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { ApiUrl } from '../../services/api.url.service';
+import { ApiUrl } from '../../../services/api.url.service';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { ApiAuthService } from '../../services/api.auth.service';
+import { ApiAuthService } from '../../../services/api.auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({

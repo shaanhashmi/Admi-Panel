@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatSelect } from '@angular/material';
-import { ApiAuthService } from '../../services/api.auth.service';
-import { ConfirmBoxService } from '../modals/confirm-box/confirm-box.service';
-import { ApiUrl } from '../../services/api.url.service';
-import { pipe } from '@angular/core/src/render3/pipe';
+
 import { Router } from '@angular/router';
+import { ApiAuthService } from '../../../services/api.auth.service';
+import { ConfirmBoxService } from '../../modals/confirm-box/confirm-box.service';
+import { ApiUrl } from '../../../services/api.url.service';
 
 @Component({
     selector: 'app-jobs',

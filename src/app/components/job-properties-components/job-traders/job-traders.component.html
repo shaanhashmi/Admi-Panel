@@ -19,5 +19,8 @@
         <i class="material-icons">add</i>
       </button>
     </mat-card-content>
+    <div *ngIf="loader" class="w-100 d-flex justify-content-center p-5">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
   </mat-card>
 </div>

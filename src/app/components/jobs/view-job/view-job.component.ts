@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { ApiAuthService } from '../../services/api.auth.service';
+import { ApiAuthService } from '../../../services/api.auth.service';
 
 @Component({
     selector: 'app-view-job',

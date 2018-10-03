@@ -39,13 +39,6 @@ export const routes: Routes = [
                 },
                 canActivate: [AuthGuardService]
             }, {
-                path: 'edit-job/:id',
-                loadChildren: './components/edit-job/edit-job.module#EditJobModule',
-                data: {
-                    title: 'Edit Jobs'
-                },
-                canActivate: [AuthGuardService]
-            }, {
                 path: 'users',
                 loadChildren: './components/users/userlist/userlist.module#UserlistModule',
                 data: {
@@ -68,16 +61,45 @@ export const routes: Routes = [
                 canActivate: [AuthGuardService]
             }, {
                 path: 'jobs',
-                loadChildren: './components/jobs/jobs.module#JobsModule',
+                loadChildren: './components/jobs/job/jobs.module#JobsModule',
                 data: {
                     title: 'Jobs'
                 },
                 canActivate: [AuthGuardService]
             }, {
+                path: 'edit-job/:id',
+                loadChildren: './components/jobs/edit-job/edit-job.module#EditJobModule',
+                data: {
+                    title: 'Edit Jobs'
+                },
+                canActivate: [AuthGuardService]
+            }, {
                 path: 'jobs/:jobid',
-                loadChildren: './components/view-job/view-job.module#ViewJobModule',
+                loadChildren: './components/jobs/view-job/view-job.module#ViewJobModule',
                 data: {
                     title: 'Jobs Description'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'jobs-properties',
+                loadChildren: './components/job-property/job-property.module#JobPropertyModule',
+                data: {
+                    title: 'Jobs Properties'
+                },
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'job-traders',
+                loadChildren: './components/job-properties/job-trade/job-trade.module#JobTradeModule',
+                data: {
+                    title: 'Jobs Traders'
+                },
+                canActivate: [AuthGuardService]
+            }, {
+                path: 'job-works',
+                loadChildren: './components/job-properties/job-work/job-work.module#JobWorkModule',
+                data: {
+                    title: 'Jobs Works'
                 },
                 canActivate: [AuthGuardService]
             }, {

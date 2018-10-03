@@ -1,0 +1,8 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <app-job-traders [jobTraders]="jobTraders" [loader]="loader" (save)="onSave($event)" (update)="onUpdate($event)"
+        (delete)="onDelete($event)"></app-job-traders>
+    </div>
+  </div>
+</div>
