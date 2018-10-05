@@ -38,28 +38,23 @@ import { JobAttributesModule } from './components/modals/job-attributes/job-attr
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule,
         AppAsideModule,
         AppFooterModule,
         AppHeaderModule,
         AppSidebarModule,
         PerfectScrollbarModule,
-        BsDropdownModule.forRoot(),
+        // BsDropdownModule.forRoot(),
         TabsModule.forRoot(),
-        ChartsModule,
+        // ChartsModule,
         HttpClientModule,
         LoaderModule,
         BrowserAnimationsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatProgressSpinnerModule,
         ConfirmBoxModule,
         JobAttributesModule
     ],
     declarations: [
         AppComponent,
-        ...APP_CONTAINERS,
-        LoginComponent,
+        ...APP_CONTAINERS
 
     ],
     providers: [{

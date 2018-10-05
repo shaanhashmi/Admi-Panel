@@ -5,6 +5,7 @@ import { ApiUrl } from '../../../services/api.url.service';
 import { ApiAuthService } from '../../../services/api.auth.service';
 import { PasswordValidators } from '../../../password-validators';
 import { TitleCasePipe } from '@angular/common';
+import { load } from '@angular/core/src/render3/instructions';
 
 @Component({
     selector: 'app-adduser',
@@ -18,6 +19,7 @@ export class AdduserComponent {
     roles = ['Admin', "User"];
     userStatus = [{ status: true, value: 'Active' }, { status: false, value: 'Deactive' }]
     userId: any = '';
+    loader: boolean;
 
     constructor(
         private fb: FormBuilder,
@@ -88,14 +90,18 @@ export class AdduserComponent {
 
     onSubmit() {
         this.submitted = true;
-        this.userForm.value._id = this.userId
+        this.loader = true;
+        this.userForm.value._id = this.userId;
         if (this.userForm.valid) {
+            console.log(this.userForm.value)
             this.apiAuth.authUpdate(`${ApiUrl.manageUser}/${this.userId}`, this.userForm.value)
                 .subscribe(res => {
+                    this.loader = false;
                     if (res.success) {
                         this.router.navigate(['admin/users'])
                     }
                 }, err => {
+                    this.loader = false;
                     console.log(err);
                     throw err
                 })

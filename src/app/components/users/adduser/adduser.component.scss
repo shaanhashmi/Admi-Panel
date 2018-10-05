@@ -23,4 +23,11 @@
     .mat-card{
         padding: 0;
     }
+     ::ng-deep .loader-body{
+        width:100% !important;
+    }
+    .loader{
+        background: #f0f3f575 ;
+         top:0px;
+    }
 }

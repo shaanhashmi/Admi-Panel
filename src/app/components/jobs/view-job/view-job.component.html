@@ -27,39 +27,53 @@
                                     <td>{{jobData?.propertyType| titlecase}}</td>
                                     <th>Job Location</th>
                                     <td>{{jobData?.jobLocation| titlecase}}</td>
-                                    <th>Job Status</th>
-                                    <td>{{jobData?.jobStatus | titlecase}}</td>
+                                    <th>Contract Edit</th>
+                                    <td>{{jobData?.isContractEdit || 'N/A' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Material Supplied</th>
                                     <td>{{jobData?.matsupplied || 'N/A' }}</td>
                                     <th>Material Details</th>
                                     <td>{{jobData?.matsupDetails || 'N/A' }}</td>
-                                    <th>Contract Edit</th>
-                                    <td>{{jobData?.isContractEdit || 'N/A' }}</td>
+                                    <th>Job Cost</th>
+                                    <td>{{jobData?.jobCost || 'N/A' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Tool Supplied</th>
                                     <td>{{jobData?.toolsupplied || 'N/A' }}</td>
                                     <th>Tool Details</th>
                                     <td>{{jobData?.toolsupDetails || 'N/A' }}</td>
-                                    <th>Job Cost</th>
-                                    <td>{{jobData?.jobCost || 'N/A' }}</td>
+                                    <th>Posted As</th>
+                                    <td>{{jobData?.isPostAs || 'N/A'}}</td>
                                 </tr>
 
                                 <tr>
-                                    <th>Posted As</th>
-                                    <td>{{jobData?.isPostAs || 'N/A'}}</td>
+                                    <th>Occupied</th>
+                                    <td>{{jobData?.isOccupied || 'N/A'}}</td>
                                     <th>Interior</th>
                                     <td>{{jobData?.isInterior || 'N/A'}}</td>
                                     <th>Quote</th>
                                     <td>{{jobData?.isQuote || 'N/A'}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Occupied</th>
-                                    <td>{{jobData?.isOccupied || 'N/A'}}</td>
+
                                     <th>New Construction</th>
                                     <td>{{jobData?.isNewConstruction || 'N/A'}}</td>
+                                    <th>Job Status</th>
+                                    <td>
+                                        <span *ngIf="jobData?.jobStatus === 'ongoing'" class="badge badge-warning">Ongoing</span>
+                                        <span *ngIf="jobData?.jobStatus === 'posted'" class="badge badge-primary">Posted</span>
+                                        <span *ngIf="jobData?.jobStatus === 'completed'" class="badge badge-success">Completed</span>
+                                        <span *ngIf="jobData?.jobStatus === 'deactivated'" class="badge badge-danger">Deactivated</span>
+                                    </td>
+                                    <th colspan="2">
+                                        <div class="form-group d-flex mb-0 justify-content-around align-items-center">
+                                            <label for="status">Change Status</label>
+                                            <select class="form-control w-50" [(ngModel)]="jobName" (ngModelChange)="selectionChanged($event)">
+                                                <option [value]="job.status" [ngClass]="{'job.bgcolor': true}" *ngFor="let job of jobStatus">{{job?.status|titlecase}}</option>
+                                            </select>
+                                        </div>
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

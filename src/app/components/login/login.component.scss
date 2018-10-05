@@ -1,13 +1,13 @@
 :host {
-    ::ng-deep .loader-body{
-        width:100% !important;
-        margin-left: 0;
-    }
     .card{
         border: none;
     }
     button:focus {
         outline: none;
+    }
+    ::ng-deep .loader-body{
+        width:100% !important;
+        margin-left: 0;
     }
     .loader{
         background: #f0f3f575 ;

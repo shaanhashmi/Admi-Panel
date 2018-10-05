@@ -3,7 +3,6 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { ApiUrl } from "./api.url.service";
 
 @Injectable({
     providedIn: 'root'

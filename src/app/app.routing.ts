@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { LoginComponent } from './components/login/login.component';
+// import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
@@ -13,7 +13,7 @@ export const routes: Routes = [
         pathMatch: 'full',
     }, {
         path: 'login',
-        component: LoginComponent,
+        loadChildren: './components/login/login.module#LoginModule',
         data: {
             title: 'Login Page'
         }
